@@ -39,15 +39,17 @@ shell의 시작
 그냥 cd  or cd~ 만 치면 유저의 최상단으로 올라감
 
 ## 파일 생성
-- touch 사용
+`touch` 사용
+
 ```
 ex : touch index.css
 ```
 ## 폴더 생성
-`mkdir + 폴더 이름
-`
+`mkdir + 폴더 이름` 사용
+
+
 ## 객체 이동 
-`- move 사용`
+`- move(mv)` 사용
 
 어떤 파일을 어디로 옮겨라 라는 구조
 
@@ -57,8 +59,8 @@ ex : mv index.html ..
 
 ## 복사하다 
 `- clone, duplicate, copy`
+`copy(cp)` 사용
 ```
-copy를 줄여서 cp로 쓴다.
 copy는 이름을 바꾸면서 복사도 가능
 ```
 `cp index.html dev/index2.html`
@@ -66,14 +68,13 @@ copy는 이름을 바꾸면서 복사도 가능
 `cp blahblah.html blahblah2.html`
 
 ### rename 
-```
-mv 명령어를 사용한다
-```
+`mv` 사용
 
 `mv index2.html blahblah.html`
 
 ## 삭제하다 
 `- remove(화학적) delete(물리적) eliminate pop`
+`r
 
 `rm blahblah.html`
 
