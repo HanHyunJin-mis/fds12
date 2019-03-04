@@ -2,8 +2,8 @@
 
 ### 초기 설정
 ```
-git config --global user.name "HanHyunJin-mis"
-git config --global user.email "forinpea121@gmail.com"
+git config --global user.name "유저 "
+git config --global user.email "가입 이메일"
 git config --global core.editor "vim"
 git config --list 
 ```
