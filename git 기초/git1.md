@@ -16,6 +16,7 @@ shell의 시작
  - zshell
  - bash
 
+
 # Git bash
 
 `~` - 우리의 현재 위치 
@@ -38,12 +39,15 @@ shell의 시작
 상단으로 올라갈 때는 .. 입력
 그냥 cd  or cd~ 만 치면 유저의 최상단으로 올라감
 
+
 ## 파일 생성
 `touch` 사용
 
 ```
 ex : touch index.css
 ```
+
+
 ## 폴더 생성
 `mkdir + 폴더 이름` 사용
 
@@ -57,6 +61,7 @@ ex : mv index.html ..
 
 `mv index.html dev` - dev로 파일 이동
 
+
 ## 복사하다 
 `- clone, duplicate, copy`
 `copy(cp)` 사용
@@ -66,6 +71,7 @@ copy는 이름을 바꾸면서 복사도 가능
 `cp index.html dev/index2.html`
 
 `cp blahblah.html blahblah2.html`
+
 
 ### rename 
 `mv` 사용
@@ -77,6 +83,7 @@ copy는 이름을 바꾸면서 복사도 가능
 `r
 
 `rm blahblah.html`
+
 
 ## 폴더 지우기
 `rm -r dev`
@@ -95,11 +102,21 @@ python hello.py
 
 ## vim command
 vim은 모드가 존재
-처음 킬 때 나타나는 것은 normal 모드
-글자를 입력하기 위해서는 insert 모드(사용자의 입력을 받음)로 들어가야 한다. (i를 입력)
-d는 잘라내기 p는 붙여넣기 shift + y는 복사하기
-:q! - 저장안함
-:wq - 저장하고 나감
+처음 킬 때 나타나는 것은 `normal 모드`
+글자를 입력하기 위해서는 `insert 모드`(사용자의 입력을 받음)로 들어가야 한다. `(i를 입력)`
+
+
+`d` - 잘라내기 
+
+`p` 는 붙여넣기
+
+`shift + y` 는 복사하기
+
+
+`:q!` - 저장안함
+
+`:wq` - 저장하고 나감
+
 작성하다 그냥 껐을 경우에는 해당 파일(swp) 삭제
 
 sudo?
