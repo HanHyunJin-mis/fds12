@@ -37,6 +37,8 @@ shell의 시작
 ```
 ex : touch index.css
 ```
+## 폴더 생성
+mkdir
 
 ## 객체 이동 - move 사용
 어떤 파일을 어디로 옮겨라 라는 구조
