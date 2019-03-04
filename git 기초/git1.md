@@ -28,9 +28,9 @@ shell의 시작
 
 `-` 로 옵션을 붙임(ls 뒤에) 
 
-`-a`는 숨김 파일까지 모두 보겟다. 
+`-a` 는 숨김 파일까지 모두 보겟다. 
 
-`-l`은 한줄씩 모든 정보를 보겠다. (옵션의 조합 가능) 
+`-l` 은 한줄씩 모든 정보를 보겠다. (옵션의 조합 가능) 
 
 `clear` 창 정리 - 모두 삭제 
  
@@ -44,28 +44,44 @@ shell의 시작
 ex : touch index.css
 ```
 ## 폴더 생성
-mkdir
+`mkdir + 폴더 이름
+`
+## 객체 이동 
+`- move 사용`
 
-## 객체 이동 - move 사용
 어떤 파일을 어디로 옮겨라 라는 구조
-ex : mv index.html ..
-mv index.html dev - dev로 파일 이동
 
-## 복사하다 - clone, duplicate, copy
+ex : mv index.html ..
+
+`mv index.html dev` - dev로 파일 이동
+
+## 복사하다 
+`- clone, duplicate, copy`
+```
 copy를 줄여서 cp로 쓴다.
 copy는 이름을 바꾸면서 복사도 가능
-cp index.html dev/index2.html
-cp blahblah.html blahblah2.html
+```
+`cp index.html dev/index2.html`
 
-rename할때는 mv 명령어를 사용한다
-mv index2.html blahblah.html
+`cp blahblah.html blahblah2.html`
 
-## 삭제하다 - remove(화학적) delete(물리적) eliminate pop
-rm blahblah.html
+### rename 
+```
+mv 명령어를 사용한다
+```
+
+`mv index2.html blahblah.html`
+
+## 삭제하다 
+`- remove(화학적) delete(물리적) eliminate pop`
+
+`rm blahblah.html`
 
 ## 폴더 지우기
-rm -r dev
+`rm -r dev`
+```
 dev라는 폴더를 지우기 - 내가 폴더 내에 있는 경우에는 지울 수 없다.
+```
 
 ps. \t, \n, # - hashtag, ^ - carot, * - asterisk, ' " `, ~ - tilled
 
