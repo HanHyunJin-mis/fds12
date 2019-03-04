@@ -59,8 +59,20 @@ rm blahblah.html
 rm -r dev
 dev라는 폴더를 지우기 - 내가 폴더 내에 있는 경우에는 지울 수 없다.
 
-ps. \t, \n, # - hashtag, ^ - carot, * - asterisk, ' " `
+ps. \t, \n, # - hashtag, ^ - carot, * - asterisk, ' " `, ~ - tilled
 
+```
+절대 경로 보기 - pwd
 
+python으로 hello.py를 열어라
+python hello.py
+```
 
-
+## vim command
+vim은 모드가 존재
+처음 킬 때 나타나는 것은 normal 모드
+글자를 입력하기 위해서는 insert 모드(사용자의 입력을 받음)로 들어가야 한다. (i를 입력)
+d는 잘라내기 p는 붙여넣기 shift + y는 복사하기
+:q! - 저장안함
+:wq - 저장하고 나감
+작성하다 그냥 껐을 경우에는 해당 파일(swp) 삭제
