@@ -52,7 +52,7 @@ git remote add(받는 사람 주소를 송장에 추가해라) + 별명(cat) + �
 
 
 - 작업 내용을 잘못 올렸을 때
-`git rm --cached inde.html` 은 깃에 커밋한 파일을 삭제
+`git rm --cached index.html` 은 깃에 커밋한 파일을 삭제
 
 
 `파일이름` Feat : Add index.html
