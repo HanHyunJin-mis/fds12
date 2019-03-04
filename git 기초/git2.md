@@ -14,7 +14,7 @@ git config --list
 
 `rm -rf .git` 을 입력하면 git으로 가는 것이 사라짐
 
-`ls -al`
+
 ```
 git 관련한 명령어는 모두 git으로 시작한다.
 ``` 
