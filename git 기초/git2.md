@@ -7,7 +7,7 @@ git config --global user.email "가입 이메일"
 git config --global core.editor "vim"
 git config --list 
 ```
-![Alt text](/images/git.png) 
+![Alt text](/images/Git.png) 
 
 ## Commit 과정
 `git init`  - 보내는 사람의 주소만 입력한 꼴
