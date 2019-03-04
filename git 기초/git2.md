@@ -1,4 +1,4 @@
-# Commit하고 수정하기
+# Git에 파일 올리기, 수정, 삭제
 
 ### 초기 설정
 ```
@@ -69,3 +69,8 @@ git add . (수정된 모든 파일을 add하는 것)
 feat : edit index.html (add head, body)
 
 html tags.I add head body.
+
+## Commit 파일 삭제
+`rm index.html` - 내 컴퓨터에서 파일 삭제
+`git add index.html` - git에다 삭제했다는 것을 add함
+`git push -u cat master` - git에다 삭제했다는 것을 push
