@@ -31,7 +31,7 @@ git remote add(받는 사람 주소를 송장에 추가해라) + 별명(cat) + �
 ```
 
 ***
-`git remote remove cat` - cat을 git에서 삭제해라
+`git remote remove cat` - cat을 git에서 삭제해라(very_first_repo라는 저장소의 주소를 대신한 cat이라는 이름을 삭제하는 것)
 
 `git remote get-url cat` cat의 주소를 알려달라는 말
 
@@ -52,10 +52,11 @@ git remote add(받는 사람 주소를 송장에 추가해라) + 별명(cat) + �
 
 
 - 작업 내용을 잘못 올렸을 때
-`git rm --cached index.html` 은 깃에 커밋한 파일을 삭제
+`git rm --cached index.html` 은 add한 파일을 unstrage하는 것
 
 
 `파일이름` Feat : Add index.html
+
 `부가 설명`  I added index.html to practice git. And I am a brilliant Developer.
 
 
@@ -63,7 +64,8 @@ git remote add(받는 사람 주소를 송장에 추가해라) + 별명(cat) + �
 ## Commit 파일 수정
 
 (가급적이면 사용X)
-git add . (모든 부분 수정)
+git add . (수정된 모든 파일을 add하는 것)
 
 feat : edit index.html (add head, body)
+
 html tags.I add head body.
