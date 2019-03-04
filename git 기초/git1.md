@@ -1,5 +1,4 @@
-# Git 기초
-
+# Git 기초 - shell command
 ## 최우영 강사님 블로그
 `
 http://www.ulgoon.com/
@@ -33,8 +32,35 @@ shell의 시작
 상단으로 올라갈 때는 .. 입력
 그냥 cd  or cd~ 만 치면 유저의 최상단으로 올라감
 ```
-##파일 생성
+## 파일 생성
 - touch 사용
 ```
 ex : touch index.css
 ```
+
+## 객체 이동 - move 사용
+어떤 파일을 어디로 옮겨라 라는 구조
+ex : mv index.html ..
+mv index.html dev - dev로 파일 이동
+
+## 복사하다 - clone, duplicate, copy
+copy를 줄여서 cp로 쓴다.
+copy는 이름을 바꾸면서 복사도 가능
+cp index.html dev/index2.html
+cp blahblah.html blahblah2.html
+
+rename할때는 mv 명령어를 사용한다
+mv index2.html blahblah.html
+
+## 삭제하다 - remove(화학적) delete(물리적) eliminate pop
+rm blahblah.html
+
+## 폴더 지우기
+rm -r dev
+dev라는 폴더를 지우기 - 내가 폴더 내에 있는 경우에는 지울 수 없다.
+
+ps. \t, \n, # - hashtag, ^ - carot, * - asterisk, ' " `
+
+
+
+
