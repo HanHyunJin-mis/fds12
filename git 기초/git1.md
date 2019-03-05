@@ -90,7 +90,9 @@ python hello.py
 
 ## vim command
 vim은 모드가 존재
+
 처음 킬 때 나타나는 것은 `normal 모드`
+
 글자를 입력하기 위해서는 `insert 모드`(사용자의 입력을 받음)로 들어가야 한다. `(i를 입력)`
 
 
