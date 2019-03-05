@@ -24,6 +24,8 @@ git 관련한 명령어는 모두 git으로 시작한다.
 
 `git remote add cat https://github.com/HanHyunJin-mis/very_first_repo.git`
 
+`git clone` + 주소 - git 내에 파일이 존재할 경우 입력 
+
 `git remote` - 받는 사람 이름(별명)
 
 ```
