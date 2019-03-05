@@ -52,6 +52,12 @@ ex : mv index.html ..
 `mv index.html dev` - dev로 파일 이동
 
 
+### rename 
+`mv` 사용
+
+`mv index2.html blahblah.html`
+
+
 ## 복사하다 
 `- clone, duplicate, copy`
 `copy(cp)` 사용
@@ -63,14 +69,10 @@ copy는 이름을 바꾸면서 복사도 가능
 `cp blahblah.html blahblah2.html`
 
 
-### rename 
-`mv` 사용
-
-`mv index2.html blahblah.html`
 
 ## 삭제하다 
 `- remove(화학적) delete(물리적) eliminate pop`
-`r
+`rm` 사용
 
 `rm blahblah.html`
 
@@ -100,9 +102,9 @@ python hello.py
 
 `d` - 잘라내기 
 
-`p` 는 붙여넣기
+`p` - 붙여넣기
 
-`shift + y` 는 복사하기
+`shift + y` - 복사하기
 
 
 `:q!` - 저장안함
