@@ -1,15 +1,4 @@
 # Git 기초 - shell command
-## 최우영 강사님 블로그
-`
-http://www.ulgoon.com/
-`
-
-데니스 리치, 켄 톰슨
-리차드 스톨먼 - GNU 프로젝트
-gnu에는 커널이 없었다.
-
-리눅스
-리누스 토발즈가 개발
 
 shell의 시작
  - zshell
