@@ -34,4 +34,9 @@ CGI
 라이브러리 = 모듈 : 맛을 더 좋아지게 하는 도구(첨가), 프레임 워크 : 전체 큰 틀을 따라가야 하는 것
 
 postman
+검사 -> network -> disable cache를 누르면 내용을 바꿀 때 캐시를 저장하지 않을 수 있다.
+
+preserve log
+
+
 
