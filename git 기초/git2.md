@@ -85,5 +85,7 @@ html tags.I add head body.
 
 ## Commit 파일 삭제
 `rm index.html` - 내 컴퓨터에서 파일 삭제
+
 `git add index.html` - git에다 삭제했다는 것을 add함
+
 `git push -u cat master` - git에다 삭제했다는 것을 push
