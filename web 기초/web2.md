@@ -19,6 +19,7 @@ JQuery : Javascript 프레임워크
 
 도서 :  모던 웹 디자인을 위한 HTML5+CSS3 입문 : 최신 HTML5 표준안과 웹 브라우저 호환성을 반영한 웹 디자인 입문서(개정판)
 모던 웹을 위한 JavaScript + jQuery 입문 : 자바스크립트, jQuery를 활용해 클라이언트와 서버 개발까지 한 번에 정복한다(3판)
+그림으로 배우는 HTTP & Network Basic
 
 프레임 워크 : 소프트웨어의 구체적인 부분에 해당하는 설계와 구현을 재사용이 가능하게끔 일련의 협업화된 형태의 클래스들을 제공하는 것 (간략하게 기능 축소)
 
@@ -37,6 +38,7 @@ postman
 검사 -> network -> disable cache를 누르면 내용을 바꿀 때 캐시를 저장하지 않을 수 있다.
 
 preserve log
+
 
 
 
