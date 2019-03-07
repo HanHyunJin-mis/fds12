@@ -1,0 +1,30 @@
+.Cheil{
+  color: black;
+}
+.connect{
+  font-size: 3em;
+}
+.background_f6{
+    background-color: #f6f6f6;
+}
+.card1 {
+  float: left;
+  text-align: center;
+}
+
+.card-img{
+  width: 60px;
+}
+
+.card-title {
+  font-size: 1em;
+  text-align: center;
+}
+
+.card_align {
+  text-align: center;
+}
+
+.page{
+  margin-top: 60px;
+}

@@ -1,0 +1,54 @@
+.head{
+    display: inline-block;
+    font-size: 4em;
+    margin: 13px;
+}
+.header:hover{
+    color:gray;
+}
+
+.head:hover{
+    color:black;
+}
+
+.lead{
+    font-size: 1em;
+}
+.play{
+    border : 2px solid black;
+    padding : 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 60px;
+    margin-left: 60%;
+    border-radius: 0%;
+}
+
+.jumbotron{
+    width : 600px;
+    margin-left : 150px;
+    z-index : 0;
+    background-color: white;
+    border-radius: 0%;
+}
+
+.sky{
+	position: absolute;
+	top : 0; 
+	left : 0;
+	min-width : 100%;
+	min-height : 100%;
+	width : auto;
+	height : auto;
+	z-index : -1;
+}
+.ideas{
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+}
+.ideas_button{
+    margin-right: 20px;
+    float: right;
+    color: white;
+}
