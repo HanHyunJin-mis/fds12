@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Social Icons</title>
+    <style>
+        .whole_area{
+            width: 100%;
+        }
+        .icon_wrapper{
+            width: 100%;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            font-size: 200px;
+        }
+       .icon_wrapper img{
+           display: inline-block;
+           height: 140px;
+       }
+
+       @media screen and (max-width:800px){
+           .icon_wrapper{
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 100px;
+           }
+           .icon_wrapper img {
+               height: 70px;
+           }
+       }
+
+        .icon_wrapper.facebook{
+            background:#3d5a98;
+        }
+        .icon_wrapper.instagram{
+            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7c200+0,ec0e25+52,7f3cb0+100 */
+            background: #f7c200; /* Old browsers */
+            background: -moz-linear-gradient(45deg, #f7c200 0%, #ec0e25 52%, #7f3cb0 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(45deg, #f7c200 0%,#ec0e25 52%,#7f3cb0 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(45deg, #f7c200 0%,#ec0e25 52%,#7f3cb0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7c200', endColorstr='#7f3cb0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        }.icon_wrapper.twitter{
+            background:#1dabdd;
+        }.icon_wrapper.pinterest{
+            background:#cb2124;
+        }.icon_wrapper.youtube{
+            background:#ff0004;
+        }
+    </style>
+</head>
+<body>
+    <div class="whole_area">
+        <div class="icon_wrapper youtube">
+            <img src="/images/youtube.png" alt="">
+        </div>
+        <div class="icon_wrapper facebook">
+            <img src="/images/facebook.png" alt="">
+        </div>
+        <div class="icon_wrapper instagram">
+            <img src="/images/instagram.png" alt="">
+        </div>
+        <div class="icon_wrapper twitter">
+            <img src="/images/twitter.png" alt="">
+        </div>
+        <div class="icon_wrapper pinterest">
+            <img src="/images/pintereset.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

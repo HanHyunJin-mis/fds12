@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+    .head{
+        font-size: 40px;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .images{
+        text-align: center;
+    }
+    .iphone{
+        width: 20em;
+    }
+    .btn:hover{
+        background-color:#3f0e40;
+        color: white;
+    }
+    .btn{
+        /* display: block; */
+        font: bold;
+        font-size: 1.2em;
+
+        border: 1px solid #3f0e40;
+        border-radius: 50%;
+        background-color: white;
+        color: #3f0e40;
+
+        width: 40px;
+        height: 40px;
+        margin-bottom: 80px;
+        margin-right: 20px;
+    }
+    ul{
+        display: inline-block;
+        list-style: none;
+        text-align: left;
+        vertical-align: top;
+        margin-top: 50px;
+    }
+    .btns{
+        display: inline;
+    }
+    .container {
+        display: inline-block;
+        position: relative;
+    }
+    img.img{
+        position: absolute;
+        top: 60px;
+        right: 55px;
+        width: 210px;
+    }
+
+    @media screen and (max-width:800px){
+           .btns{
+               vertical-align: top;
+           }
+           .iphone{
+               width: 16em;
+           }
+           img.img{
+               width: 165px;
+               right: 45px;
+               top: 50px;
+           }
+           .btn{
+                font: bold;
+                font-size: 0.8em;
+
+                width: 30px;
+                height: 30px;
+                margin-bottom: 80px;
+                margin-right: 20px;
+                }
+       }
+    b{
+        color: #3f0e40;
+    }
+
+
+    </style>
+    <title>190308_Jquery</title>
+</head>
+
+
+<body>
+    <div class="head">
+        How It Works
+    </div>
+    <div class="images">
+        <div class="container">
+            <img class="iphone" src="/images/iphone.png" alt="">
+
+            <img class="img image1" src="/images/pan1.jpg" alt="">
+            <img class="img image2" src="/images/pan2.jpg" alt="">
+            <img class="img image3" src="/images/pan3.jpg" alt="">
+            <img class="img image4" src="/images/pan4.jpg" alt="">
+        </div>
+
+        <div class="btns">
+            <ul>
+                <li><button class="btn btn1">1</button>
+                    <b>in Just 2 Taps</b>
+                </li>
+                <li><button class="btn btn2">2</button>
+                    <b>Get a Driver</b>
+                </li>
+                <li><button class="btn btn3">3</button>
+                    <b>Track Your Driver</b>
+                </li>
+                <li><button class="btn btn4">4</button>
+                    <b>Arrive Safely</b>
+            </ul>
+        </div>
+    </div>
+    
+
+    <script type="text/javascript">
+        $(".img").hide();
+        $(".image1").show();
+
+        $(".btn1").click(function(){
+            $(".img").hide();
+            $(".btn").css("background-color","white")
+            $(".btn").css("color","#3f0e40")
+            $(".btn1").css("background-color","#3f0e40")
+            $(".btn1").css("color","white")
+            $(".image1").show();
+        });
+        
+        $(".btn2").click(function(){
+            $(".img").hide();
+            $(".btn").css("background-color","white")
+            $(".btn").css("color","#3f0e40")
+            $(".btn2").css("background-color","#3f0e40")
+            $(".btn2").css("color","white")
+            $(".image2").show();
+        });
+        
+        $(".btn3").click(function(){
+            $(".img").hide();
+            $(".btn").css("background-color","white")
+            $(".btn").css("color","#3f0e40")
+            $(".btn3").css("background-color","#3f0e40")
+            $(".btn3").css("color","white")
+            $(".image3").show();
+        });
+
+        $(".btn4").click(function(){
+            $(".img").hide();
+            $(".btn").css("background-color","white")
+            $(".btn").css("color","#3f0e40")
+            $(".btn4").css("background-color","#3f0e40")
+            $(".btn4").css("color","white")
+            $(".image4").show();
+        });
+    </script>
+</body>
+</html>

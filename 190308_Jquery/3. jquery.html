@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <img class="test_image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSac6WuiAQjQlXBjHWInyD-Bofr2215I0UgiEnXRoK7tt5840I5" alt="">
+    <a href="#" class="btn">변경</a>
+
+    <script type="text/javascript">
+        // 내가 바꾸고 싶은 dom 객체.click
+        // 전달을 받아주는 부분 - e
+        $(".btn").click(function(e){
+            e.preventDefault(); // 원래 일어나는 동작을 막는 것 (링크를 이동하지 말라는 말)
+            $(".test_image").toggle();
+            // if ($(".test_image:visible").length){
+            // $(".test_image:visible").hide();} //테스트 이미지를 찾는다, length - 화면에 보이는 개수
+            // else{
+            //     $(".test_image").show();
+            // } 
+        });
+            //toggle 반대 상황으로 만들어 주는 것
+            // 그림 스르륵도 해보기
+    </script>
+</body>
+</html>
