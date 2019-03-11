@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>99</title>
+    <script type="text/javascript">
+        /*
+        for, while
+        메뉴 구현
+        1. 구구단 출력
+        몇단을 출력할까요?
+        4 x 1 = 4
+        2. 프로그램 종료
+        */
+
+        while(true){
+            // console.log("메뉴");
+            // console.log("1. 구구단 출력");
+            // console.log("2. 프로그램 종료");
+            menu = prompt("메뉴 \n 1. 구구단 출력 \n 2. 프로그램 종료");
+            if(menu =="1"){
+                console.log("구구단 출력");
+                menu1 = prompt("몇단을 출력할까요?", "")
+                for(i = 1; i <=9; i++){
+                j = menu1;
+                console.log(j +"*"+ i + "="+ (i*j));
+                }
+            }else if(menu =="2"){
+                console.log("프로그램 종료");
+                break;
+            }
+        }
+
+        dan = prompt("몇 단을 출력할까요?", "2");
+        dan = Number(dan)
+
+
+
+        // for(i = 1; i <=9; i++){
+        //     j = menu;
+        //     console.log(j +"*"+ i + "="+ i*j)
+        // }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

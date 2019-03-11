@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript_homework2</title>
+    <script>
+    function cel() {
+        var c = document.getElementById("input").value;
+        temp = c;
+        cel_f = Number(temp) * 1.8 + 32;
+        document.getElementById("output").innerHTML = cel_f;
+    }
+
+    function fah() {
+        var f = document.getElementById("input").value;
+        temp = f;
+        cel_f = (Number(temp)-32) / 1.8;
+        document.getElementById("output").innerHTML = cel_f;
+    }
+
+    </script>
+
+
+    <style>
+    ul{
+        list-style : none;
+    }
+    li{
+        margin: 20px;
+    }
+    .trans{
+        text-align: center;
+    }
+    button{
+        padding: 10px;
+        font-size: 1em;
+        background-color: rgb(230, 141, 25);
+        
+    }
+    button:hover{
+        background-color: rgb(211, 59, 59);
+        color: white;
+    }
+    </style>
+
+    <!-- 2. [선택] 1번 과제에서 만든 프로그램의 메뉴를 HTML로 만들고, 
+        메뉴를 클릭하면 프로그램이 동작해서 그 결과값이 HTML에 뜨게 만들기 (변환기록 저장은 하지 않아도 됨) -->
+</head>
+<body>
+    <div class="trans">
+        <input type="text" id="input" name="celsius" value="input">
+        <input type="text" id="output" name="celsius" value="output">
+
+        <div>
+            <ul>
+                <li>Menu</li>
+                <li><button onclick="cel();">1. 섭씨 -> 화씨 변환하기</button> </li>
+                <li><button onclick="fah();">2. 화씨 -> 섭씨 변환하기</button></li>
+            </ul>
+        </div>
+    </div>
+
+
+</body>
+</html>

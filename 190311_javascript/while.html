@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>While</title>
+    <script type="text/javascript">
+    // 중요
+    // while은 반복에 초점, 언제까지 반복하는가
+    i = 0;
+    while(i < 100){
+        console.log("Hi");
+        break;
+        /*
+            break : 만나는 순간 가장 가까운 반복문을 탈출
+            continue : 만나는 순간 반복문의 다음 회차로 이동
+        */
+    }
+
+    // 무한 반복
+    // 무한으로 무언가 하고 싶을 때
+    while(true){
+        console.log("메뉴");
+        console.log("1. 숫자 입력");
+        console.log("2. 문자 입력");
+        menu = prompt("메뉴를 선택하세요", "1");
+        if(menu =="1"){
+            console.log("숫자 입력 시작");
+        }else if(menu =="2"){
+            console.log("문자 입력 시작");
+        }else if(menu =="3"){
+            console.log("프로그램 종료");
+            break;
+        }
+    }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

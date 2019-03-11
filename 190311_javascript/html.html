@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script type="text/javascript">
+        /*
+            프로그래밍
+            입력, 저장, 처리, 출력에 관한 문법
+            입력 : prompt, from tag
+            저장 : 변수, 쿠키, 웹 스토리지, 데이터베이스
+            처리 : 연산, 분기, 반복
+            출력 : comsole.log, 화면에 DOM 추가
+        */
+        // 변수 : 어떤 값을 담는 그릇
+        // 그릇 : 종류 - 일반, 원시 -> 숫자, 문자 불대수
+        // 여러가지 여러종류를 담는 그릇 ㅣ 배열(list, dict, tuple, set)
+        // 왜 변수에 무엇인가를 담아서 사용? - 컴퓨터는 암산 불가하기 때문에
+        // 변수 : 만들기, 값 읽기, 값 바꾸기, 값 사용 (연산의 피연산자, 함수의 매개변수)
+        
+        
+        a ="Hi" // a라는 이름을 가진 저장공간을 만들고, 거기에 "~~"값을 저장(할당)한다.
+        // 도메인(프로그램, 해당영역)[해당 주제, 기술적인 영역]과 관련한 지식이 중요
+        // = 할당 연산자
+        // =의 의미 일반적으로는 같다,이지만 프로그래밍에서는 저장한다, ==를 같다 라는 의미로 사용한다.
+        // a라는 저장공간의 이름
+        // a라는 이름을 가진 저장공간
+
+        // name이라는 이름을 가진 저장공간을 만들고 거기에 여러분의 영문 이름을 저장해보세요.
+        // 변수명 : 그 안에 무엇이 들어있는지
+
+        // 숫자, 불리언값 등은 값을 그대로 쓴다.
+        // 그런데 문자열은 홑따옴표 혹은 쌍따옴표로 감싸서 표기한다.
+        // 왜? : 문자열을 따옴표 없이 표기하면 - 변수 혹은 예약어 등과 헷갈릴 수 있다.
+        name = "Han \"Hyun \"Jin" //escaping 처리 - escape 문자 : 어떤 특별한 목적이 있다.
+
+        alert(name);
+        // 변수명을 만드는 방법
+        // 1. 숫자는 변수 이름 맨 앞에 사용하지 않는다.
+        // 2. 특수문자는 _(언더바)만 사용한다.
+        // 3. 변수명은 대소문자를 구분한다,
+        // 4. 명사, 동사로 변수명을 작성한다.
+        // 5. 예약어는 사용금지(if, print)
+
+        // 변수명을 작성하는 방법
+        // 1. 카멜 케이스 : yourName - 각 단어의 첫 글자를 대문자, 나머지는 소문자
+        // 2. 파스칼 케이스 : YourName - 모든 단어의 첫 글자를 대문자, 나머지는 소문자
+        // 3. 스네이크 케이스 : your_name - 단어들 사이에 _(언더바)를 넣는 방법 전체 소문자 [대부분 이것으로 씀]
+        // 4. 헝가리안 표기법 : strName, intNumber - 변수명 앞에 어떤 데이터를 저장할 것인지 기록해두는 방법
+        
+        // 프롬프트 ~~~님 만들어보기
+        // var person = prompt("Please enter your name", "이름입력");
+
+        // if(person != null){
+        //     document.getElementById("demo").innerHTML = "Hello" + person + "님!";
+        // }
+
+        // 프로그래밍 진행 방법
+        // 순차 : 코드의 위에서부터 아래쪽으로 한줄씩 실행된다.
+        // 분기 : A를 실행할지 B를 실행할지 선택하는 것(조건에 따라서)
+        // 반복 : A, B 중에 실행할 코드를 여러번 반복하고 싶을 때
+    </script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        
+    </script>
+    <!-- 순차 때문에 밑에다 스크립트를 써줘야 함 -->
+    <div id="content"></div>
+    <span id="number1"></span> + <span id="number2"></span> = <span id="number3"></span>
+    <script type="text/javascript">
+        // var person = prompt("Please enter your name", "이름입력");
+
+        // if(person != null){
+        //     document.getElementById("content").innerHTML = "Hello! " + person + " 님!";
+        // }
+        var number1 = prompt("enter random number1", "숫자입력");
+        var number2 = prompt("enter random number2", "숫자입력");
+        if(number1 != null){
+            document.getElementById("number1").innerHTML = number1;
+        }
+        if(number2 != null){
+            document.getElementById("number2").innerHTML = number2;
+        }
+        var number3 = Number(number1) + Number(number2);
+            document.getElementById("number3").innerHTML = number3;
+
+        // if 하나에 number1, 2를 넣고 person1 + person2를 number3의 식 뒤에 붙임
+        // 숫자 -> 문자, 문자 -> 숫자 Type Casting 형변환
+        /*
+        Number
+        string
+        Boolean
+        null
+        undefined
+        */
+    </script>
+</body>
+</html>

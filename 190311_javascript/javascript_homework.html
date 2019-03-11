@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript_homework1</title>
+    <script type="text/javascript">
+    
+    // cel_f = Number(cel) * 1.8 + 32;
+    // fah_c = (Number(fah) - 32) / 1.8;
+
+    c = null;
+    f = null;
+        while (true) {
+            menu = prompt("메뉴 \n 1) 섭씨 -> 화씨 변환하기\n 2) 화씨 -> 섭씨 변환하기 \n 3. 프로그램 종료", "1");
+            if (menu == "1") {
+                if (f == null) { //그 전에 화씨 계산이 없었다는 것
+                    c = prompt("섭씨 온도를 입력하세요.");
+                    cel_f = Number(c) * 1.8 + 32;
+                    alert(cel_f);
+
+                } else if (f != null) {
+                    //그 전에 화씨 계산이 있었다는 것 
+                    alert(f);
+                    f = null;
+                }
+
+
+            } else if (menu == "2") {
+                if (c == null) { //그 전에 섭씨 계산이 없었다는 것
+                    f = prompt("화씨 온도를 입력하세요.");
+                    cel_f = (Number(f)-32)/1.8;
+                    alert(cel_f);
+
+                } else if (c != null) {
+                    //그 전에 섭씨 계산이 있었다는 것 
+                    alert(c);
+                    c = null;
+                }
+
+            } else if (menu == "3") {
+                break;
+            }
+        }
+
+
+
+    </script>
+</head>
+<body>
+        <!-- [필수] 화씨->섭씨, 섭씨-> 화씨로 변환하는 프로그램 만들기
+        [메뉴]  1) 섭씨 -> 화씨 변환하기
+        [메뉴]  2) 섭씨 -> 화씨 변환하기
+        [메뉴]  3) 프로그램 종료하기
+        * 이전에 변환한 기록이 있으면 해당 기록을 반환
+        * 반환을 하면 기록 말소
+        * 상태를 저장할 줄 알아야 한다. (flag 기법 - undefined, null)
+    2. [선택] 1번 과제에서 만든 프로그램의 메뉴를 HTML로 만들고, 
+        메뉴를 클릭하면 프로그램이 동작해서 그 결과값이 HTML에 뜨게 만들기 (변환기록 저장은 하지 않아도 됨) -->
+    <div id="temp"></div>
+
+
+
+
+</body>
+</html>
