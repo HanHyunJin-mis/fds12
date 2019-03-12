@@ -13,6 +13,10 @@
             태그 -> 클래스 -> 아이디 (먼저 순위를 가짐)
             simple -> complex (.test와 body.test의 경우 자세한 것이 먼저 순위를 가진다.)
             */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
         .test{
             color: red; /*요소의 텍스트 색상*/
             color: rgb(255, 100,0);
@@ -29,8 +33,22 @@
             background: #d5d5d5;
             background: url('http://img.etoday.co.kr/pto_db/2013/10/20131015163359_356709_500_308.jpg') no-repeat center center;
             /* no repeat는 타일식 반복을 막는 것 */
-            background-size: contain;
-                /* 크기가 맞춰짐 */
+            background-size : cover;
+            padding-bottom: 50%;
+            
+            /* 
+            .부모 엘리먼트 {
+                position: realtive;
+            }
+
+            .자식 엘리먼트 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); 
+            */
+}
+            /* 크기가 맞춰짐? */
         }
 
         .link_test{
@@ -124,6 +142,13 @@
             }
         );
     </script>
-
+<!-- ui(모바일도 좋음), 디자인에 대한 google에서 만든 프레임 사이트 - Material Design Lite -->
+<!-- 깔끔한 사이트 Flat UI -->
+<!-- hackernoon : 수학의 정석 같은 사이트 / tutorialzine : 프레임워크를 어떻게 써야하나 -->
+<!-- 예쁘게 보일 수 있을까, 어울리는 포트폴리오, 특이한 기능보단 어울리게 만드는 것이 중요, jquery 플러그인 수집, angular와 html,css를 따로 포트폴리오를 구성할 것 -->
+<!-- 프론트엔드 개발 첫걸음 : React, Angular, Vue.js, React Native 
+    Vue.js 첫걸음	: 기본 원리부터 응용까지 탄탄하게 익히는 웹 애플리케이션 개발 (전1권)
+    책은 위키북스
+-->
 </body>
 </html>

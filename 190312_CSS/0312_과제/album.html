@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+        <style>
+        .navbar{
+            width: 100%;
+            position: fixed;
+            z-index: 50;
+        }
+        .nav{
+            position: absolute;
+            left: 70px;
+        }
+
+
+        /* jumbotron css */
+        .jumbotron{
+            text-align: center;
+            padding: 100px 0px;
+        }
+        .album{
+            font-size: 2.5em;
+        }
+        .lead{
+            margin: 20px;
+        }
+
+
+        /* card css */
+        .card_img{
+            height: 220px;
+        }
+        .card-body{
+            height: 200px;
+        }
+        .card{
+            width: 30%;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .card-bottom {
+            font-size: 0;
+        }
+        .btn-v{
+            background-color: white;
+            border: 1px solid #07093c;
+            border-top-right-radius: 0%;
+            border-bottom-right-radius: 0%;
+            margin-right: 0%;
+            border-right: 0px;
+        }
+        .btn-e{
+            background-color: white;
+            border: 1px solid #07093c;
+            border-top-left-radius: 0%;
+            border-bottom-left-radius: 0%;
+            margin-left: 0%;
+        }
+        
+        .text-muted{
+            margin-left: 50%;
+            font-size: 13px;
+        }
+        .btn-light:hover {
+            color: white;
+            background-color: #07093c;
+        }
+        @media screen and (max-width:980px){
+            .card{
+                height: 500px;;
+                margin: 10px;
+                display: inline-block;
+            }
+            .card-body{
+            height: 220px;
+            }
+            .text-muted{
+            margin-left: 75%;
+            font-size: 13px;
+            } 
+        }
+
+        @media screen and (max-width:800px){
+            .card{
+                width: 100%;
+                height: 400px;;
+                margin: 10px;
+                display: inline-block;
+            }
+            .card-body{
+            height: 260px;
+            }
+            .text-muted{
+            margin-left: 63%;
+            font-size: 13px;
+            } 
+        }
+        @media screen and (max-width:400px){
+            .card{
+                width: 100%;
+                height: 420px;;
+                margin: 10px;
+                display: inline-block;
+            }
+            
+            .text-muted{
+            margin-left: 50%;
+            font-size: 13px;
+            } 
+        }
+
+        </style>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a href="#" class="navbar-brand">FDS</a>
+            <nav class="nav">
+                <a class="nav-link active" href="home.html">Home</a>
+                <a class="nav-link" href="album.html">Album</a>
+                <a class="nav-link" href="dashboard.html">Dash Board</a>
+            </nav>
+        <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    
+    <!-- 앨범 --> 
+    <!-- 1. 점보트론 -->
+    <div class="jumbotron">
+        <div class="album">Album example</div>
+            <div class="lead">Something short and leading about the collection below—its contents,
+            <br> the creator, etc. Make it short and sweet, but not too short so folks don’t
+            <br> simply skip over it entirely.
+            </div>
+        <a class="btn btn-primary btn-md" href="#" role="button">Mail call to action</a>
+        <a class="btn btn-secondary btn-md" href="#" role="button">Secondary action</a>
+    </div>
+        
+    <!-- 2. 카드 9 장  가로 348, 세로 223-->
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <!-- <div class="col col-lg-1"> -->
+            </div>
+            <div class="">
+                <!-- 카드 본문 1번째 줄 -->
+                <div class="card mb-3">
+                    <img src="../../images/square.jpg" class="card-img-top card_img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.This content is a little bit longer.</p>
+                        <div class="card-bottom">
+                            <a class="btn btn-light btn-sm btn-v" href="#" role="button">View</a>
+                            <a class="btn btn-light btn-sm btn-e" href="#" role="button">Edit</a>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <img src="../../images/square.jpg" class="card-img-top card_img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                            content.This content is a little bit longer.</p>
+                        <div class="card-bottom">
+                            <a class="btn btn-light btn-sm btn-v" href="#" role="button">View</a>
+                            <a class="btn btn-light btn-sm btn-e" href="#" role="button">Edit</a>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-3">
+                    <img src="../../images/square.jpg" class="card-img-top card_img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                            content.This content is a little bit longer.</p>
+                        <div class="card-bottom">
+                            <a class="btn btn-light btn-sm btn-v" href="#" role="button">View</a>
+                            <a class="btn btn-light btn-sm btn-e" href="#" role="button">Edit</a>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                
+                    </div>
+                </div>
+                <!-- 카드 2번째 줄 -->
+                <div class="card mb-3">
+                    <img src="../../images/square.jpg" class="card-img-top card_img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                            content.This content is a little bit longer.</p>
+                        <div class="card-bottom">
+                            <a class="btn btn-light btn-sm btn-v" href="#" role="button">View</a>
+                            <a class="btn btn-light btn-sm btn-e" href="#" role="button">Edit</a>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                
+                    </div>
+                </div>
+                
+                <div class="card mb-3">
+                    <img src="../../images/square.jpg" class="card-img-top card_img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                            content.This content is a little bit longer.</p>
+                        <div class="card-bottom">
+                            <a class="btn btn-light btn-sm btn-v" href="#" role="button">View</a>
+                            <a class="btn btn-light btn-sm btn-e" href="#" role="button">Edit</a>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                
+                    </div>
+                </div>
+                
+                <div class="card mb-3">
+                    <img src="../../images/square.jpg" class="card-img-top card_img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                            content.This content is a little bit longer.</p>
+                        <div class="card-bottom">
+                            <a class="btn btn-light btn-sm btn-v" href="#" role="button">View</a>
+                            <a class="btn btn-light btn-sm btn-e" href="#" role="button">Edit</a>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                
+                    </div>
+                </div>
+                <!-- 카드 3번쨰 줄 -->
+                <div class="card mb-3 ">
+                    <img src="../../images/square.jpg" class="card-img-top card_img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                            content.This content is a little bit longer.</p>
+                        <div class="card-bottom">
+                            <a class="btn btn-light btn-sm btn-v" href="#" role="button">View</a>
+                            <a class="btn btn-light btn-sm btn-e" href="#" role="button">Edit</a>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mb-3">
+                    <img src="../../images/square.jpg" class="card-img-top card_img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                            content.This content is a little bit longer.</p>
+                        <div class="card-bottom">
+                            <a class="btn btn-light btn-sm btn-v" href="#" role="button">View</a>
+                            <a class="btn btn-light btn-sm btn-e" href="#" role="button">Edit</a>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                
+                    </div>
+                </div>
+                
+                <div class="card mb-3">
+                    <img src="../../images/square.jpg" class="card-img-top card_img" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                            content.This content is a little bit longer.</p>
+                        <div class="card-bottom">
+                            <a class="btn btn-light btn-sm btn-v" href="#" role="button">View</a>
+                            <a class="btn btn-light btn-sm btn-e" href="#" role="button">Edit</a>
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                
+                    </div>
+                </div>
+            <!-- 카드 3번째 줄 끝 -->
+            </div>
+            <!-- <div class="col col-lg-1"> -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
