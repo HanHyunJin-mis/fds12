@@ -8,14 +8,14 @@
         var c = document.getElementById("input").value;
         temp = c;
         cel_f = Number(temp) * 1.8 + 32;
-        document.getElementById("output").innerHTML = cel_f;
+        document.getElementById("output").value = cel_f;
     }
 
     function fah() {
         var f = document.getElementById("input").value;
         temp = f;
         cel_f = (Number(temp)-32) / 1.8;
-        document.getElementById("output").innerHTML = cel_f;
+        document.getElementById("output").value = cel_f;
     }
 
     </script>
@@ -54,7 +54,7 @@
         <div>
             <ul>
                 <li>Menu</li>
-                <li><button onclick="cel();">1. 섭씨 -> 화씨 변환하기</button> </li>
+                <li><button onclick="cel();">1. 섭씨 -> 화씨 변환하기</button></li>
                 <li><button onclick="fah();">2. 화씨 -> 섭씨 변환하기</button></li>
             </ul>
         </div>
