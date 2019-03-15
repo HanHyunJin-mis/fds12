@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <script type="text/javascript">
+// 입력
+        // var game_count = prompt("게임 수를 입력하세요");
+        
+// 처리
+        var lotto_numbers = [];
+        for(j=0; j<game_count; j++){
+            var original_numbers = [];
+            for(i=1; i<46; i++){
+                original_numbers.push(i);
+            }            
+            
+            var numbers = [];
+            // console.log(original_numbers.length);
+
+            for(i=0;i<6;i++){
+            var number_index = Math.floor((Math.random() * original_numbers.length));
+            var get_number = original_numbers[number_index];
+            numbers.push(get_number);
+            original_numbers.splice(number_index,1);
+            }
+            lotto_numbers.push(numbers);
+        }
+        console.log(lotto_numbers);
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="card">
+        <h5 class="card-header">Featured</h5>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+    </div>
+    <!-- 
+        게임수 선택 - input 입력
+        새로 게임하기 - 버튼
+        몇 장 출력 - 좌우 버튼 출력 창 선택할 수 있게
+
+        다섯개가 들어있는 배열 하나, 각각 다섯개의 배열
+        var 장수 - 나머지 존재 = 몫 + 1, 나머지 존재 X = 몫
+        (var) 출력하고 싶은 페이지 -1 * 5
+
+        비용 : 게임수 입력받은 것 * 1000
+     -->
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

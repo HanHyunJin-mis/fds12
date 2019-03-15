@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        console.log(Math.random()); //0~1 사이의 숫자를 랜덤
+
+        //1~45 사이의 정수를 뽑아주는 코드
+        // Math.floor((Math.random() * 45 + 1)); //floor는 내림
+        // for(i=0;i<5;i++){
+        //     var numbers = [];
+        //     // 어느 부분을 반복해야하는지
+        //     while(numbers.length<6){
+        //         var number = Math.floor((Math.random() * 45 + 1));
+        //         if(numbers.indexOf(number) == -1){
+        //             numbers.push(number);
+        //         }
+        //     }
+        //     numbers.sort(function(a,b){return a-b}); //a와 b를 비교해서 큰수를 가져옴
+        //     console.log(numbers);
+        // }
+
+        for(j=0; j<5; j++){
+            var original_numbers = [];
+            for(i=1; i<46; i++){
+                original_numbers.push(i);
+            }            
+            
+            var numbers = [];
+            // console.log(original_numbers.length);
+
+            for(i=0;i<6;i++){
+            var number_index = Math.floor((Math.random() * original_numbers.length));
+            var get_number = original_numbers[number_index];
+            numbers.push(get_number);
+            original_numbers.splice(number_index,1);
+            }
+
+            console.log(numbers);
+        }
+
+        // for(i=0; i<numbers.length;i++){
+        //     for(j=0;j<numbers.length;j++){
+        //         if(i!=j && (numbers[i] == numbers[j])){
+        //             numbers[i] = Math.floor((Math.random() * 45 + 1));
+        //         }
+        //     }
+        // }
+            
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--
+        로또 번호는 1~45까지의 정수 중에서 중복되지 않는 숫자 6개를 뽑는 게임
+        로또 용지 1장은 최대 5게임을 표현할 수 있습니다.
+        1게임 1,000원, 최대 1장은 5,000원 (5게임)
+        1) 로또 번호 1게임을 뽑게 해준다.
+        2) 로또 번호 5게임을 뽑게 해준다.
+        3) 로또 번호를 지정된 게임 수만큼 뽑게 해준다.
+        4) 지정된 게임 수만큼 뽑고, 비용을 함께 출력한다.
+
+        어떻게 추첨하는지 
+        번호 출력
+    -->
+
+    <!-- 
+        게임수 선택 - input 입력
+        새로 게임하기 - 버튼
+        몇 장 출력 - 좌우 버튼 출력 창 선택할 수 있게
+
+        다섯개가 들어있는 배열 하나, 각각 다섯개의 배열
+        var 장수 - 나머지 존재 = 몫 + 1, 나머지 존재 X = 몫
+        (var) 출력하고 싶은 페이지 -1 * 5
+
+        비용 : 게임수 입력받은 것 * 1000
+     -->
+</body>
+</html>
