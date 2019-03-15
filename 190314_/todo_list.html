@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            // 리스트 추가
+            $('#add').click(function(e){
+                e.preventDefault();
+                $('#list_p').append('<li class="mdl-list__item">'+'<span class="mdl-list__item-primary-content">'+ '<img src="/images/bird.png" class="material-icons  mdl-ist__item-avatar">' + $('input[name="input_text"]').val()+ '</span>' + '<span class="mdl-list__item-secondary-action">' + '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">' + '<input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" checked />' + '</label>' + '</span>' + '</li>');
+                $(".button")
+                // document.querySelector(".button")
+                // document.querySelectorAll("input").forEach(i => {
+                //     if(i.getAttribute("type") === "checkbox") {
+                //         console.log(i.checked)
+                //     }
+                // })
+            });
+
+            $(".delete-btn").click(function(e) {
+                e.preventDefault();
+                $("#list_p").find("input:checked")
+                            .parent() // label
+                            .parent() // span
+                            .parent() //li
+                            .remove()
+            });
+
+            // 팝업창 만들기
+            $('#pop').hide(); //기본 - 숨기기
+            $('#pop_add').click(function(){
+                $('#pop').show(); //팝업 보이기
+                });
+            $('#close').click(function() {
+                $('#pop').hide(); //팝업 숨기기
+                });
+
+        });
+
+    
+    </script>
+    <style>
+        body{
+            background-color: #fee4e3;
+        }
+        .menu{
+            text-align: center;
+        }
+        .material-icons{
+            padding: 0px 20px;
+            width: 50px;
+            height: 50px;
+        }
+        #add{
+            background-color: #ffc5b4;
+
+        }
+        /* 바 버튼 */
+        #pop_add{
+            border: 0;
+            background-color: #fee4e3;
+            color: #000;
+        }
+
+        /* 팝업 스타일 */
+        #pop{
+            /* width:300px; 
+            height:400px; */
+                position:absolute; 
+                top:282px; 
+                left:704px; 
+                text-align:center; 
+                border:2px solid #000;
+            }
+            .demo-card-wide.mdl-card {
+                width: 512px;
+            }
+            .demo-card-wide > .mdl-card__title {
+                color: #fff;
+                height: 176px;
+                background-color: #fee4e3;
+            }
+            .demo-card-wide > .mdl-card__menu {
+                color: #fff;
+            }
+        .mdl-list__item{
+            margin: 0 20%;
+        }
+        /* all,ing,complete */
+        
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 상단 메뉴바 -->
+        <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+            <header class="mdl-layout__header mdl-layout__header--transparent">
+                <div class="mdl-layout__header-row">
+                <!-- 제목 -->
+                <span class="mdl-layout-title">To-do List</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation -->
+                <nav class="mdl-navigation">
+                    <!-- 팝업창 띄우기 버튼 -->
+                    <input type="button" id="pop_add" class="mdl-navigation__link" value="add to-do">
+                    <!-- 팝업창 -->
+                        <div id="pop" class="demo-card-wide mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">To-do List</h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                    <input type="text" name="input_text">
+                                    <input id="add" type="submit" value="+ add to-do">
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a id="close" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                close
+                                </a>
+                            </div>
+                        </div>
+                    <!-- 팝업 끝 -->
+                    <a class="mdl-navigation__link delete-btn" href="">Delete</a>
+                    
+                </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">To-do List</span>
+                <nav class="mdl-navigation">
+                    <input type="button" id="pop_add" class="mdl-navigation__link" value="add to-do">
+                    <a class="mdl-navigation__link delete-btn" href="">Delete</a>
+   
+                </nav>
+            </div>
+            <main class="mdl-layout__content">
+            </main>
+        </div>
+    
+    <!-- 리스트 추가 -->
+    <div>
+        <!-- <button id="add">+ add to-do</button> -->
+        <div class="menu">
+                <h2>To-do List</h2>
+                <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                mdl-layout--fixed-tabs">
+                <header class="mdl-layout__header">
+                    <!-- Tabs -->
+                    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                    <a href="#fixed-tab-1" class="mdl-layout__tab is-active">All</a>
+                    <a href="#fixed-tab-2" class="mdl-layout__tab">Ing</a>
+                    <a href="#fixed-tab-3" class="mdl-layout__tab">Complete</a>
+                    </div>
+                </header>
+                
+                <main class="mdl-layout__content">
+                    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+                    <div class="page-content"><ul id="list_p">
+                        </ul></div>
+                    </section>
+                    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+                    <div class="page-content"><!-- Your content goes here --></div>
+                    </section>
+                    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+                    <div class="page-content"><!-- Your content goes here --></div>
+                    </section>
+                </main>
+                </div>
+        </div>
+        
+        
+        <!-- <ul id="list_p">
+        </ul> -->
+        
+    </div>
+    <!-- 
+        form 태그는 안의 어떤 버튼을 눌러도 submit된다.
+        바탕색, 리스트 흰박스, 검정 글자
+        1. My To-Do List
+        2. 입력받을 박스
+        2. + add to-do - 리스트 생성
+        3. ㅁ 내용 제목     
+        
+     -->
+
+    <!-- 
+        리스트 삭제
+        체크박스 -> 체크 -> 삭제 버튼 누를시 -> 삭제
+        체크시 -> 체크박스 class와 체크박스가 있는 상위 li의 class를  is- checked로 추가한다.
+        바뀐 is-checked가 
+    -->
+    <!-- <input type="text" name="input_text">
+            <input id="add" type="submit" value="+ add to-do">
+            <input class="delete-btn" type="button" value="delete"> -->
+
+    <!-- <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+            <img src="/images/bird.png" class="material-icons  mdl-ist__item-avatar">
+
+        </span>
+        <span class="mdl-list__item-secondary-action">
+            <label class="check_box"for="list-checkbox-1">
+                <input type="checkbox" onclick="check()" id="myCheck">
+            </label>
+        </span>
+    </li> -->
+
+</body>
+</html>
