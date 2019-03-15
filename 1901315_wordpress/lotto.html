@@ -1,44 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
-// 입력
-        // var game_count = prompt("게임 수를 입력하세요");
-        
-// 처리
-        var lotto_numbers = [];
-        for(j=0; j<game_count; j++){
-            var original_numbers = [];
-            for(i=1; i<46; i++){
-                original_numbers.push(i);
-            }            
-            
-            var numbers = [];
-            // console.log(original_numbers.length);
+        // 횟수 계산
+        var lotto_numbers = [];        
+        var cur_page = 1;
+        var total_page;
 
-            for(i=0;i<6;i++){
-            var number_index = Math.floor((Math.random() * original_numbers.length));
-            var get_number = original_numbers[number_index];
-            numbers.push(get_number);
-            original_numbers.splice(number_index,1);
+        function get_game() {
+            lotto_numbers = [];
+            cur_page = 1;
+            total_page=-1;
+            game_count = $('input[name="game_count"]').val();
+
+            for (j = 0; j < game_count; j++) {
+                var original_numbers = [];
+                for (i = 1; i < 46; i++) {
+                    original_numbers.push(i);
+                }
+
+                var numbers = [];
+                // console.log(original_numbers.length);
+
+                for (i = 0; i < 6; i++) {
+                    var number_index = Math.floor((Math.random() * original_numbers.length));
+                    var get_number = original_numbers[number_index];
+                    numbers.push(get_number);
+                    original_numbers.splice(number_index, 1);
+                }
+                lotto_numbers.push(numbers);
             }
-            lotto_numbers.push(numbers);
-        }
-        console.log(lotto_numbers);
+            console.log(lotto_numbers);
+        };
+
+        
+        // 카드 추가
+        function set_cards(page) {
+            $('.card').remove();
+
+            $('.game_output').append('<div class="card">' +
+                '<h5 class="card-header">Featured</h5>' +
+                '<div class="card-body">' +
+                '<h5 class="card-title"></h5>' +
+                '<p class="card-text"></p>' +
+                '</div>' +
+                '</div>'
+            )
+            $('.card-title').append(page + ' page');
+            var number2 = " ";
+
+            var start_index = 0;
+            var end_index = 0;
+            if(lotto_numbers.length<6){
+                start_index = 0;
+                end_index = lotto_numbers.length;
+            }
+            else if(page==1){
+                start_index = 0;
+                end_index = 5;
+            }
+            else{
+                start_index = (page - 1) * 5;
+                if(lotto_numbers.length % 5 ==0)
+                    end_index = start_index + 5;
+                else if(lotto_numbers.length % 5 > 0 && page<=lotto_numbers.length/5)
+                    end_index = start_index + 5;
+                else end_index = start_index + (lotto_numbers.length%5);
+            }
+            // lotto_numbers 안의 배열 개수, 한 페이지에 배열 인덱스 < 5
+            for (i = start_index; i < end_index; i++) {
+
+                number2 = " ";
+                for (j = 0; j < 6; j++) {
+                    number2 += lotto_numbers[i][j];
+                    if(j == 5)
+                        continue;
+                    number2 += ', ';
+                    
+                }
+                $('.game_output .card-text').append(number2);
+                $('.game_output .card-text').append('<br>');
+            }
+        };
+
+
+
+        // 입력
+        // game_count = prompt("게임 수를 입력하세요");
+        $(document).ready(function () {
+            $('.start').click(function () {
+                $('.btn_group').show();
+                get_game();
+
+                if(lotto_numbers.length%5==0)
+                    total_page = lotto_numbers.length/5;
+                else total_page = lotto_numbers.length/5+1;
+
+                total_page = Math.floor(total_page);
+
+                set_cards(cur_page);
+            });
+            $('.btn_prev').click(function(){
+                if (cur_page > 1){
+                    set_cards(--cur_page);
+                }
+            });
+            $('.btn_next').click(function(){
+                if(cur_page<total_page)
+                    set_cards(++cur_page);
+            });
+        });
+
+        
+
+// 처리
+
     </script>
+
+    <style>
+        .lotto {
+            text-align: center;
+        }
+
+        .game_output {
+            width: 40%;
+            display: inline;
+            text-align: center;
+        }
+
+        .card {
+            display: inline-block;
+        }
+        .btn_group{
+            margin: 20px;
+        }
+    </style>
     <title>Document</title>
 </head>
+
 <body>
-    <div class="card">
+    <div class="lotto">
+        <div class="game_input">
+            <input type="number" min="1" step="1" name="game_count">
+            <button type="button" class="btn btn-warning start">Start-Game!</button>
+        </div>
+            <div class="game_output">
+            </div>
+            <div class="btn_group">
+                <button type="button" class="btn btn-warning btn_prev">Prev</button>
+                <button type="button" class="btn btn-warning btn_next">Next</button>
+            </div>
+    </div>
+    <script type="text/javascript">
+        $('.btn_group').hide();
+    </script>
+    <!-- <div class="card">
         <h5 class="card-header">Featured</h5>
         <div class="card-body">
             <h5 class="card-title">Special title treatment</h5>
             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         </div>
-    </div>
+    </div> -->
     <!-- 
         게임수 선택 - input 입력
         새로 게임하기 - 버튼
@@ -50,8 +177,15 @@
 
         비용 : 게임수 입력받은 것 * 1000
      -->
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
