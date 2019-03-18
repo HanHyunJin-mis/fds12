@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    // mouseover, mouseout : 자식 엘리먼트에 접근했을 때도 동작
+    // mouseenter, mouseleave : 자식 엘리먼트에는 동작하지 않음
+          $(document).ready(function () {
+                $('.bottom_menu1').hide();
+                $('.top_menu1').hover(function(){
+                    $(".bottom_menu1").toggle();
+                });
+                $('.bottom_menu2').hide();
+                $('.top_menu2').hover(function(){
+                    $(".bottom_menu2").toggle();
+                });
+                $('.bottom_menu3').hide();
+                $('.top_menu3').hover(function(){
+                    $(".bottom_menu3").toggle();
+                });
+                $('.bottom_menu4').hide();
+                $('.top_menu4').hover(function(){
+                    $(".bottom_menu4").toggle();
+                });
+
+                $( '.menu' ).click(function () {
+                if ( $( ".menu_bottom:first" ).is( ":hidden" ) ) {
+                    $( ".menu_bottom" ).slideDown( "slow" );
+                } else {
+                    $( ".menu_bottom" ).hide();
+                }
+                });
+                $('.category_title').click('')
+            
+                // 카테고리
+                $('.category_menu').hide();
+                $('.category_title').hover(function(){
+                    if ( $( ".category_menu:first" ).is( ":hidden" ) ) { 
+                        $( ".category_menu" ).slideDown( "slow" );
+                    } else {
+                        $( ".category_menu" ).hide();
+                }
+                });
+          });
+
+         
+    </script>
+    <title>CSS, bootstrap X, JQuery O</title>
+    <style>
+        /* 
+            position
+
+            static
+            relative : 상대적 위치
+            absolute : 절대적 위치, 영역을 차지하지 않음, display 안에서
+            fixed : 뷰 포트 안에서 절대적 위치, display 밖에서, 햄버거...?
+            float : 영역을 차지하긴함, 백과사전의 사진 옆 글씨들(흘러가는)
+
+            상단 메뉴바 - slide down 활용
+            롤오버 했을 때 하위메뉴 나오게
+            옆쪽 메뉴 롤오버를 했을때
+            
+        */
+        body{
+        }
+        div{
+            display: inline;
+        }
+        .menu{
+            position: fixed;
+        }
+        .top_menu_bar{
+            background-color: #fee4e3;
+            display: inline-block;
+            width: 90%;
+            height: 21px;
+        }
+        .menu_bottom{
+            background: #de9a44;
+            margin: 3px;
+            width: 150px;
+            height: 300px;
+            display: none;
+            float: left;
+        }
+        .top_menu1{
+            width: 20%;
+            height: 20px;
+            margin: 20px;
+            display: inline-block;
+            position: relative;
+        }
+        .top_menu2{
+            width: 20%;
+            height: 20px;
+            margin: 20px;
+            display: inline-block;
+            position: relative;
+        }
+        .top_menu3{
+            width: 20%;
+            height: 20px;
+            margin: 20px;
+            display: inline-block;
+            position: relative;
+        }
+        .top_menu4{
+            width: 20%;
+            height: 20px;
+            margin: 20px;
+            display: inline-block;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+        }
+        .bottom_menu1{
+            background: #ffc5b4;
+            position: absolute;
+            top: 5px;
+            left: 0;
+        }
+        .bottom_menu2{
+            background: #ffc5b4;
+            position: absolute;
+            top: 5px;
+            left: 0;
+        }
+        .bottom_menu3{
+            background: #ffc5b4;            
+            position: absolute;
+            top: 5px;
+            left: 0;
+        }
+        .bottom_menu4{
+            background: #ffc5b4;
+            position: absolute;
+            top: 5px;
+            left: 0;
+        }
+        
+        .category1{
+            display: inline-block;
+            width: 24%;
+            background: #de9a44;
+        }
+        .category2{
+            display: inline-block;
+            width: 24%;
+            background: #de9a44;
+        }
+        .category3{
+            display: inline-block;
+            width: 24%;
+            background: #de9a44;
+        }
+        .category4{
+            display: inline-block;
+            width: 24%;
+            background: #de9a44;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <!-- 
+            메뉴 아이콘 클릭 시 메뉴 옆에서 슬라이드 되게 하기
+
+        -->
+        <a href="#" class="main_menu">Menu</a>
+        <ul class="menu_bottom">
+            <li>menu_bottom</li>
+            <li>menu_bottom</li>
+            <li>menu_bottom</li>
+            <li>menu_bottom</li>
+        </ul>
+        
+
+    </div>
+
+
+    <div class="top_menu_bar">
+        <!--
+            상단 메뉴 호버 시 메뉴바 하나씩 떨어지게
+            상단 메뉴relative, 하단 메뉴 absolute로
+            rollover -> 클래스로 하위 메뉴 추가
+        -->
+        <div class="menu1">
+            <!-- 마우스가 내려올때 하위 메뉴가 끊기지 않게 해줘야 함 
+            box-sizing : content-box, border-box
+            -->
+            <div class="top_menu1">
+                top_menu1
+                <ul class="bottom_menu1">
+                    <li>bottom_menu1</li>
+                    <li>bottom_menu1</li>
+                    <li>bottom_menu1</li>
+                    <li>bottom_menu1</li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu2">
+            <div class="top_menu2">
+                top_menu2
+                <ul class="bottom_menu2">
+                    <li>bottom_menu2</li>
+                    <li>bottom_menu2</li>
+                    <li>bottom_menu2</li>
+                    <li>bottom_menu2</li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu3">   
+            <div class="top_menu3">
+                top_menu3
+                <ul class="bottom_menu3">
+                    <li>bottom_menu3</li>
+                    <li>bottom_menu3</li>
+                    <li>bottom_menu3</li>
+                    <li>bottom_menu3</li>
+                </ul>
+            </div>
+        </div>     
+        <div class="menu4">
+            <div class="top_menu4">
+                top_menu4
+                <ul class="bottom_menu4">
+                    <li>bottom_menu4</li>
+                    <li>bottom_menu4</li>
+                    <li>bottom_menu4</li>
+                    <li>bottom_menu4</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+
+
+
+    <div class="category">
+        <ul class="category_title">
+            <div class="category1">
+                top_menu1
+                <ul class="category_menu">
+                    <li>sub1</li>
+                    <li>sub2</li>
+                    <li>sub3</li>
+                    <li>sub4</li>
+                </ul>
+            </div>
+            <div class="category2">
+                top_menu2
+                <ul class="category_menu">
+                    <li>sub1</li>
+                    <li>sub2</li>
+                    <li>sub3</li>
+                    <li>sub4</li>
+                </ul>
+            </div>
+            <div class="category3">
+                top_menu3
+                <ul class="category_menu">
+                    <li>sub1</li>
+                    <li>sub2</li>
+                    <li>sub3</li>
+                    <li>sub4</li>
+                </ul>
+            </div>
+            <div class="category4">
+                top_menu4
+                <ul class="category_menu">
+                    <li>sub1</li>
+                    <li>sub2</li>
+                    <li>sub3</li>
+                    <li>sub4</li>
+                </ul>
+            </div>
+        </ul>
+    </div>
+
+</body>
+</html>

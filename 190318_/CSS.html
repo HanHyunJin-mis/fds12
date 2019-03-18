@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>CSS, bootstrap X, JQuery O</title>
+    <style>
+        /* 
+            position
+
+            static
+            relative : 상대적 위치
+            absolute : 절대적 위치, 영역을 차지하지 않음, display 안에서
+            fixed : 뷰 포트 안에서 절대적 위치, display 밖에서, 햄버거...?
+            float : 영역을 차지하긴함, 백과사전의 사진 옆 글씨들(흘러가는)
+
+            상단 메뉴바 - slide down 활용
+            롤오버 했을 때 하위메뉴 나오게
+            옆쪽 메뉴 롤오버를 했을때
+            
+        */
+        body{
+            background: #000;
+        }
+        div{
+            width: 300px;
+            height: 200px;
+            display: inline-block;
+        }
+        #div1{
+            background: red;
+            position: absolute;
+            left: 42px;
+            top : 30px;
+        }
+        #div2{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">Div1 content</div>
+    <div id="div2">Div2 content</div>
+
+</body>
+</html>

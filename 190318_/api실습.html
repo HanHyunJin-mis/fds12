@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script type="text/javascript">
+        var address;
+        var username;
+        var id;
+        var email;
+        var password;
+        
+        $(document).ready(function(){
+            $('#zipcode_search').click(function(){
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        console.log(data);
+                        $('#address').val(data.address);
+                    }
+                }).open();
+            });
+            
+
+            $('.finish').click(function(){
+                username = $('#username').val();
+                id = $('#id').val();
+                password = $('#password').val();
+                email = $('#email').val();
+                address = $('#address').val();
+
+                
+                if(/^[A-Za-z0-9_]{3,19}$/i.test($('#id').val()) == false) {
+                    alert('ID는 영문(대,소문자) + 숫자만 입력가능하며 첫번째 문자는 영문만 가능합니다.');
+                    return false;
+                }
+                if(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/i.test($('#password').val()) == false){
+                    alert('Password는 특수문자 / 문자 / 숫자 포함 형태의 8~15자리 이내의 값만 가능합니다.');
+                    return false;
+                }
+                if(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test($('#email').val()) == false){
+                    alert('이메일을 다시 입력하세요.');
+                    return false;
+                }
+                alert('이름 : ' + username +'\n' + '아이디 : ' + id +'\n'+ '비밀번호 : ' + password +'\n'+ '이메일 : '+email+'\n'+'주소 : ' + address);
+                
+
+                // if(username.length < 2 || username.length > 4){
+                //     alert('이름을 2~4 자리로 입력하세요');
+                //     // return false;
+                // }else if(id == false){
+                //     alert('아이디를 입력하세요');
+                // }else if(password == false){
+                //     alert('비밀번호를 입력하세요');
+                // }else if(email == false){
+                //     alert('이메일을 입력하세요');
+                // }else if(address == false){
+                //     alert('주소를 입력하세요');
+                // }else{
+                //     alert('이름 : ' + username +'\n' + '아이디 : ' + id +'\n'+ '비밀번호 : ' + password +'\n'+ '이메일 : '+email+'주소 : ' + address);
+                // }
+                
+            });
+
+                
+                
+                
+        });
+            
+        
+    </script>
+    <style>
+    a{
+        color: white;
+    }
+    a:hover{
+        color: white;
+        text-decoration: none;
+    }
+    .form-group{
+        width: 300px;
+        margin-left: 40%;
+    }
+    form{
+        margin-top: 10%;
+    }
+    .button{
+        margin-left: 41%;
+    }
+    </style>
+    <title>우편번호 검색기 실습</title>
+</head>
+<body>
+    <!-- <input type="text" name="address" placeholder="도로명 주소 입력" id="address">
+    <button id="zipcode_search">우편번호 찾기</button>
+    <script>
+        $(function(){
+            $('#zipcode_search').click(function(){
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        console.log(data);
+                        $('#address').val(data.address);
+                    }
+                }).open();
+            });
+        });
+    </script> 
+    
+        회원가입창 만들기
+        1. 아이디
+        2. 비밀번호
+        3. 이름
+        4. 주소 - 우편번호, 주소, 주소 디테일, 우편번호 찾기
+        5. 회원가입 확인버튼 - submit(form의)
+
+        *회원 가입 확인 버튼을 눌렀을 때 모든 결과를 하나로 합쳐서 alert 창에 띄워주세요.
+
+        form 태그 안의 하위 요소들
+        input, select, radio, textarea
+        input - type => text, email, phone, date, password, hidden
+    -->
+    <form>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Name</label>
+            <input type="text" class="form-control" id="username" placeholder="Name input">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">ID</label>
+            <input type="text" class="form-control" id="id" placeholder="ID input">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password input">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Address</label>
+            <input type="text" class="form-control" id="address" placeholder="도로명 주소 입력">
+        </div>
+        <div class="button">
+            <button type="button" id="zipcode_search" class="btn btn-warning">우편번호 찾기</button>
+            <button type="button" class="btn btn-success"><a href="#" class="finish">회원가입 완료</a></button>
+        </div>
+    </form>
+    
+    <!-- <script>
+        입력값이 있는지 없는지 test : validation 걸기, 최종 안내 문구 출력 - if만 걸림
+        정규표현식 찾아서 넣기 - test 사이트 : regular expression
+
+        $('').submit(function(){
+            if($('#username').val()==''){
+                alert();
+                return false;
+            }
+        });
+        
+    </script> -->
+</body>
+</html>
