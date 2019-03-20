@@ -13,37 +13,48 @@
             session storage - 브라우저를 끄면 사라짐(잠깐만 쓰고 싶을 때)
     -->
     <script type="text/javascript">
+        //span name 값 클래스 변수
+        var span_name;
+        var list_contents;
+        var key_name = "content";
+        // 리스트 추가
+        function list(){
+                $('#list_p').prepend('<li class="mdl-list__item">'+'<span class="mdl-list__item-primary-content">'+ '<img src="/images/peach.png" class="material-icons mdl-ist__item-avatar">' + list_contents + '</span>' + '<span class="mdl-list__item-secondary-action">' + '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">' +'<button type="button" class="edit">Edit</button>'+ '<input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" unchecked />' + '</label>' + '</span>' + '</li>');
+            }
+
+        // 저장 기능
+        function save(){
+                var content = {};
+                //딕셔너리로 저장
+                //리스트의 내용들을 딕셔너리로 저장 (attr 사용, data-value)
+                var todos = $('#list_p .mdl-list__item-primary-content')
+                todos.each(function(index) {
+                    content[index] = $(this).text();
+                })
+                // content[localStorage.length + 1] = span_name;
+                var content_string = JSON.stringify(content);
+                // console.log(content);
+                localStorage.setItem('todos', content_string );
+                return false;
+            };
+            
+        // 새로고침 불러오기 기능
+        function reload(){
+            //내용 불러오기
+            //불러온 내용 밑에서부터 틀 안에 집어넣기
+            var form_content = localStorage.getItem('todos');
+            var dict_data = JSON.parse(form_content);
+            for(var i=Object.keys(dict_data).length; i >= 1; i--) {
+                list_contents = dict_data[i-1];
+                list();    
+            };
+        };
+        
+
+
+
         $(document).ready(function(){
-            // 리스트 추가
-            $('#add').click(function(e){
-                e.preventDefault();
-                $('#list_p').prepend('<li class="mdl-list__item">'+'<span class="mdl-list__item-primary-content">'+ '<img src="/images/peach.png" class="material-icons  mdl-ist__item-avatar">' + $('input[name="input_text"]').val()+ '</span>' + '<span class="mdl-list__item-secondary-action">' + '<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">' +'<button type="button" class="edit">Edit</button>'+ '<input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" unchecked />' + '</label>' + '</span>' + '</li>');
-                $(".button")
-                // document.querySelector(".button")
-                // document.querySelectorAll("input").forEach(i => {
-                //     if(i.getAttribute("type") === "checkbox") {
-                //         console.log(i.checked)
-                //     }
-                // })
-            });
 
-            $(".delete-btn").click(function(e) {
-                e.preventDefault();
-                $("#list_p").find("input:checked")
-                            .parent() // label
-                            .parent() // span
-                            .parent() //li
-                            .remove()
-            });
-
-            // 팝업창 만들기
-            $('#pop').hide(); //기본 - 숨기기
-            $('#pop_add').click(function(){
-                $('#pop').show(); //팝업 보이기
-                });
-            $('#close').click(function() {
-                $('#pop').hide(); //팝업 숨기기
-                });
             // 왼쪽 상단 메뉴 효과
             $('.menu_list').hide();
             $('.title_menu').mouseover(function(){
@@ -58,12 +69,56 @@
                     width : 'toggle'
                 }, 'slow');
             });
-            // 편집 기능
-            $('.edit').click()
-            // 저장 기능
+            // 팝업창 만들기
+            $('#pop').hide(); //기본 - 숨기기
+            $('#pop_add').click(function(){
+                $('#pop').show(); //팝업 보이기
+                });
+            $('#close').click(function() {
+                $('#pop').hide(); //팝업 숨기기
+                });
             
-            // 새로고침 불러오기 기능
+            reload();
+            
+            
+            $('#add').click(function(e){
+                e.preventDefault();
+                list_contents = $('input[name="input_text"]').val();
+                list();
+                $('.mdl-list__item-primary-content').data("name",list_contents);
+                span_name = $('.mdl-list__item-primary-content').data("name");
+                console.log(span_name);
+                save();
+            });
 
+            $(".delete-btn").click(function(e) {
+                e.preventDefault();
+                $("#list_p").find("input:checked")
+                            .parent() // label
+                            .parent() // span
+                            .parent() //li
+                            .remove();
+                            // parents(찾고 싶은 tag)를 찾아도됨
+                save();
+            });
+            // sibling() : 형제 - 누르고 형제에 있는 다른 것을 숨길 때
+            //이벤트 사용 방법
+            // 1. event(function)
+            // 2. on (event, function())
+            //live는 나중에 동적으로 추가되도 이벤트 추가
+            /*
+            (document).on(event) - 나중에 동적으로 추가되도 이벤트 추가
+            e.key ==13 키 눌릴때
+            css({'color':'red','color':'red'})
+            언제, 누구를(selector), 어떤 상황에(event), 무엇을(dom 제어, css 변경)
+
+            return false - form 안넘어가게 하려고
+            $(this)
+            */
+            $('#load_button').click(function(){
+                reload();
+            });
+            
         });
 
     
@@ -97,8 +152,6 @@
         }
         /* 팝업 스타일 */
         #pop{
-            /* width:300px; 
-            height:400px; */
             position:absolute; 
             top:300px; 
             left:30%; 
@@ -148,6 +201,8 @@
         }
     </style>
     <title>To-do List</title>
+
+
 </head>
 <body>
     <!-- 상단 메뉴바 -->
@@ -187,79 +242,26 @@
                     <!-- 팝업 끝 -->
                     <!-- 오른쪽 상단 delete 버튼 -->
                     <input type="button" class="mdl-navigation__link delete-btn" value="Delete">
-                    <!-- <a type="button" class="mdl-navigation__link delete-btn" >Delete</a> -->
+                  
                 </nav>
                 </div>
             </header>
             
             <main class="mdl-layout__content">
+                <!-- 리스트 추가 -->
+                <div>
+                    <!-- <button id="add">+ add to-do</button> -->
+                    <div class="menu">
+                        <h2>To-do List</h2>
+                            <div class="page-content">
+                                <ul id="list_p">
+                                    
+                                    <!-- <input type="button" id="load_button" value="Reload"> -->
+                                </ul>
+                            </div>
+                    </div>
+                </div>
             </main>
         </div>
-    
-    <!-- 리스트 추가 -->
-    <div>
-        <!-- <button id="add">+ add to-do</button> -->
-        <div class="menu">
-            <h2>To-do List</h2>
-                <div class="page-content">
-                    <ul id="list_p">
-                    </ul>
-                </div>
-        </div>
-    </div>
-        
-        
-        <!-- <ul id="list_p">
-        </ul> -->
-        
-    </div>
-    <!-- 
-        form 태그는 안의 어떤 버튼을 눌러도 submit된다.
-        바탕색, 리스트 흰박스, 검정 글자
-        1. My To-Do List
-        2. 입력받을 박스
-        2. + add to-do - 리스트 생성
-        3. ㅁ 내용 제목     
-        
-     -->
-
-    <!-- 
-        리스트 삭제
-        체크박스 -> 체크 -> 삭제 버튼 누를시 -> 삭제
-        체크시 -> 체크박스 class와 체크박스가 있는 상위 li의 class를  is- checked로 추가한다.
-        바뀐 is-checked가 
-    -->
-    <!-- <input type="text" name="input_text">
-            <input id="add" type="submit" value="+ add to-do">
-            <input class="delete-btn" type="button" value="delete"> -->
-
-    <!-- <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-            <img src="/images/bird.png" class="material-icons  mdl-ist__item-avatar">
-
-        </span>
-        <span class="mdl-list__item-secondary-action">
-            <label class="check_box"for="list-checkbox-1">
-                <input type="checkbox" onclick="check()" id="myCheck">
-            </label>
-        </span>
-    </li> 
-    componentHandler.upgradeElement
-    달력 - input date
-    -->
-    <!-- 
-    <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-            <img src="/images/peach.png" class="material-icons  mdl-ist__item-avatar">
-        $('input[name="input_text"]').val()
-        </span>
-        <span class="mdl-list__item-secondary-action">
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">
-                <button type="button" class="edit">Edit</button>
-                <input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" unchecked />
-            </label>
-        </span>
-    </li> -->
-
 </body>
 </html>

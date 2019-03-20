@@ -9,13 +9,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+
     <script type="text/javascript">
         var address;
         var username;
         var id;
         var email;
         var password;
-        
+        // var name_key = "name";
+        // var id_key = "id";
+    
+        // $('.finish').click(function(){
+        //         localStorage.setItem(name_key, username);
+        // });
+
+        // $('#btn_load').click(function(){
+        //     content_data = localStorage.getItem(storage_key);
+        //     $('#content').val(username);
+        // });
+
         $(document).ready(function(){
             $('#zipcode_search').click(function(){
                 new daum.Postcode({
@@ -26,7 +38,7 @@
                 }).open();
             });
             
-
+            var storage_key = "content";
             $('.finish').click(function(){
                 username = $('#username').val();
                 id = $('#id').val();
@@ -47,9 +59,10 @@
                     alert('이메일을 다시 입력하세요.');
                     return false;
                 }
+
                 alert('이름 : ' + username +'\n' + '아이디 : ' + id +'\n'+ '비밀번호 : ' + password +'\n'+ '이메일 : '+email+'\n'+'주소 : ' + address);
                 
-
+                
                 // if(username.length < 2 || username.length > 4){
                 //     alert('이름을 2~4 자리로 입력하세요');
                 //     // return false;
@@ -65,11 +78,25 @@
                 //     alert('이름 : ' + username +'\n' + '아이디 : ' + id +'\n'+ '비밀번호 : ' + password +'\n'+ '이메일 : '+email+'주소 : ' + address);
                 // }
                 
-            });
-
                 
+                var form_content = $('#content_form').serialize();
+                form_content = decodeURIComponent(form_content);
+                localStorage.setItem(storage_key,form_content);
+                return false;
                 
-                
+                });
+                $('.btn_load').click(function(){
+                    var form_content = localStorage.getItem(storage_key);
+                    var split_data = form_content.split("&");
+                    
+                    for(var i in split_data){
+                        var content_data = split_data[i].split("=");
+                        var key = content_data[0];
+                        var data = content_data[1];
+                        $('#' + key).val(data);
+                    }
+                    return false;
+                });
         });
             
         
@@ -93,7 +120,7 @@
         margin-left: 41%;
     }
     </style>
-    <title>우편번호 검색기 실습</title>
+    <title>우편번호 검색기 실습-login</title>
 </head>
 <body>
     <!-- <input type="text" name="address" placeholder="도로명 주소 입력" id="address">
@@ -124,32 +151,34 @@
         input, select, radio, textarea
         input - type => text, email, phone, date, password, hidden
     -->
-    <form>
+    <form id="content_form">
         <div class="form-group">
             <label for="formGroupExampleInput">Name</label>
-            <input type="text" class="form-control" id="username" placeholder="Name input">
+            <input type="text" class="form-control" name="username" id="username" placeholder="Name input">
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">ID</label>
-            <input type="text" class="form-control" id="id" placeholder="ID input">
+            <input type="text" class="form-control" name="id" id="id" placeholder="ID input">
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password input">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password input">
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Email">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput2">Address</label>
-            <input type="text" class="form-control" id="address" placeholder="도로명 주소 입력">
+            <input type="text" class="form-control" name="address" id="address" placeholder="도로명 주소 입력">
         </div>
+    </form>
         <div class="button">
             <button type="button" id="zipcode_search" class="btn btn-warning">우편번호 찾기</button>
             <button type="button" class="btn btn-success"><a href="#" class="finish">회원가입 완료</a></button>
+            <button type="button" class="btn btn-success "><a href="#" class="btn_load">Reload</a></button>
         </div>
-    </form>
+    
     
     <!-- <script>
         입력값이 있는지 없는지 test : validation 걸기, 최종 안내 문구 출력 - if만 걸림

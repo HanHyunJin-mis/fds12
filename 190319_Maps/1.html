@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="content" id="content">
+    <form id="content_form">
+        <input type="text" name="content1" id="content1">
+        <input type="text" name="content2" id="content2">
+        <input type="text" name="content3" id="content3">
+        <button id="btn_save">Save</button>
+        <button id="btn_load">Load</button>
+    </form>
+    <script type="text/javascript">
+        // var storage_key = "content";
+        // $(function(){
+        //     $('#btn_save').click(function(){
+        //         localStorage.setItem(storage_key, $('#content').val());
+        //     });
+
+        //     $('#btn_load').click(function(){
+        //         content_data = localStorage.getItem(storage_key);
+        //         $('#content').val(content_data);
+        //     });
+        // });
+        var content = {} //dictionary (사전형)
+        content['content1'] = '1111';
+        content['content2'] = '2222';
+        content['content3'] = '3333';
+        content['content4'] = '4444';
+        console.log(content);
+        
+        //JSON을 사용하면 어떤 언어에서든 불러올 수 있다.
+        var content_string = JSON.stringify(content);
+        console.log(content_string);
+
+        var content_dict = JSON.parse(content_string);
+        console.log(content_dict);
+
+        for(var key in content_dict){
+            content = $('#' + key).val(content_dict[key]);
+            console.log(content);
+        }
+    </script>
+</body>
+</html>

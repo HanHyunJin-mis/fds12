@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <title>Title</title>
+</head>
+<body>
+    회원 목록
+    <div class="id">
+
+    </div>
+    <!-- {"0" : ["1234", true], } -->
+
+    <script type="text/javascript">
+        // reload();
+        console.log(window.location.search)
+        var query = window.location.search.substr(1);
+        query = decodeURIComponent(query);
+
+        console.log(query)
+        var get_data = query.split("&");
+        console.log(get_data);
+        for(var i in get_data) {
+            var data = get_data[i].split("=");
+            var name = data[0];
+            var value = data[1];
+            $('.id').append(name, ' : ', value, '<br>').val();
+            console.log(name, value);
+            save();
+        }
+        
+        function save(){
+            var content = {};
+            var todos = $('.id');
+            todos.each(function(index) {
+                content[index] = $(this).text();
+            });
+            var content_string = JSON.stringify(content);
+            localStorage.setItem('todos', content_string );
+            return false;
+            };
+        // function reload(){
+        //     var form_content = localStorage.getItem('todos');
+        //     var dict_data = JSON.parse(form_content);
+        //     for(var i=0; Object.keys(dict_data).length >i; i++) {
+        //         // list_contents = dict_data[i-1];
+        //         $('.id').append(dict_data[i-1] + '<br>');
+        //     };
+        // };
+    </script>
+</body>
+</html>
