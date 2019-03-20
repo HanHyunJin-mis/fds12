@@ -30,4 +30,4 @@ merge
 git remote get-url rmorigin
 3. git fetch rmorigin develop -> fetch 일단 받아두는 것
 4. git merge rmorigin develop -> 지금 있는 나의 develop의 브랜치와 merge (push전에 항상 확인)
-5. git push origin develop
+5. git push origin develop - develop branch를 origin(내 gith) 서버에 push

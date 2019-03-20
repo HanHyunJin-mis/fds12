@@ -98,9 +98,16 @@
                             .parent() // span
                             .parent() //li
                             .remove();
-                            // parents(찾고 싶은 tag)를 찾아도됨
                 save();
             });
+            
+            $('#load_button').click(function(){
+                reload();
+            });
+            
+        });
+
+            // parents(찾고 싶은 tag)를 찾아도됨
             // sibling() : 형제 - 누르고 형제에 있는 다른 것을 숨길 때
             //이벤트 사용 방법
             // 1. event(function)
@@ -115,13 +122,6 @@
             return false - form 안넘어가게 하려고
             $(this)
             */
-            $('#load_button').click(function(){
-                reload();
-            });
-            
-        });
-
-    
     </script>
     <style>
         body{
