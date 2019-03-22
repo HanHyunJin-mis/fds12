@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+        />
+
+        <title>간단한 지도 표시하기</title>
+        <style>
+            .inline-block {
+                display: inline-block;
+            }
+            .reviews {
+            }
+        </style>
+
+        <script
+            type="text/javascript"
+            src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=d58v0roydf&submodules=geocoder"
+        ></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+        ></script>
+        <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+
+    <body>
+        <div
+            id="test_naver_map"
+            class="inline-block"
+            style="width:70%;height:800px;"
+        ></div>
+        <div
+            class="inline-block reviews"
+            style="width:28%; height: 800px; float: right;"
+        ></div>
+        <p>
+            <label for="useremail">주소찾기</label>
+            <input
+                type="text"
+                name="address"
+                placeholder="도로명 주소 입력"
+                id="address"
+            />
+            <a href="#" id="zipcode_search">우편번호 찾기</a>
+            <button id="searchBtn">검색</button>
+        </p>
+        <script>
+            var option = {
+                center: new naver.maps.LatLng(37.5487382, 127.0534817),
+
+                zoom: 14,
+
+                scaleControl: true,
+                logoControl: true,
+                mapDataControl: true,
+                mapTypeControl: true,
+                zoomControl: true,
+
+                zoomControlOptions: {
+                    position: naver.maps.Position.RIGHT_CENTER
+                }
+            };
+
+            var naver_map = new naver.maps.Map($("#test_naver_map")[0], option);
+
+            naver_map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
+
+            naver.maps.Event.addListener(naver_map, "click", function(e) {
+                //marker.setPosition(e.latlng);
+
+                var marker = new naver.maps.Marker({
+                    position: e.latlng,
+                    map: naver_map
+                });
+
+                naver_map.setCenter(e.latlng);
+                naver.maps.Event.addListener(marker, "click", test);
+            });
+
+            $("#zipcode_search").click(function() {
+                console.log("테스트");
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        console.log(data);
+                        $("#address").val(data.address);
+                    }
+                }).open();
+            });
+
+            $("#searchBtn").click(function() {
+                console.log("어드레스 함수 실행");
+                naver.maps.Service.geocode(
+                    {
+                        address: $("#address").val()
+                    },
+                    function(status, response) {
+                        if (status !== naver.maps.Service.Status.OK) {
+                            return alert("Something wrong!");
+                        }
+                        var result = response.result, // 검색 결과의 컨테이너
+                            items = result.items; // 검색 결과의 배열\
+                        var pointX = items[0].point.x;
+                        var pointY = items[0].point.y;
+                        console.log(pointX, pointY);
+
+                        // do Something
+
+                        var marker = new naver.maps.Marker({
+                            position: new naver.maps.Point(pointX, pointY),
+                            map: naver_map
+                        });
+
+                        naver_map.setCenter(
+                            new naver.maps.Point(pointX, pointY)
+                        );
+
+                        naver.maps.Event.addListener(
+                            marker,
+                            "click",
+                            test(pointX, pointY)
+                        );
+                    }
+                );
+            });
+
+            function test(pointX, pointY) {
+               var userInput = {};
+               var userReview = prompt("리뷰를 입력하세요");
+               console.log(userReview);
+               userInput[0] = userReview;
+               userInput[1] = pointX;
+               userInput[2] = pointY;
+               console.log(userInput);
+               var content_string = JSON.stringify(userInput);
+               localStorage.setItem(localStorage.length + 1, content_string);
+
+               var content_string_load = localStorage.getItem(
+                   localStorage.length
+               );
+               var content_dict = JSON.parse(content_string_load);
+               console.log(content_dict);
+
+               var reviewList = document.getElementsByClassName("reviews");
+               var list = document.createElement("div");
+               list.innerText = "리뷰: " + content_dict[0];
+               reviewList[0].appendChild(list);
+               var marker = new naver.maps.Marker({
+                   position: new naver.maps.Point(
+                       content_dict[1],
+                       content_dict[2]
+                   ),
+
+                   map: naver_map
+               });
+
+               // for (var i = 0; i < localStorage.length; i++) {
+               //     var content_string_load = localStorage.getItem(i + 1);
+               //     var content_dict = JSON.parse(content_string_load);
+               //     console.log(content_dict);
+
+               //     var reviewList = document.getElementsByClassName("reviews");
+               //     var list = document.createElement("div");
+               //     list.innerText = "리뷰: " + content_dict[0];
+               //     reviewList[0].appendChild(list);
+               //     var marker = new naver.maps.Marker({
+               //         position: new naver.maps.Point(
+               //             content_dict[1],
+               //             content_dict[2]
+               //         ),
+
+               //         map: naver_map
+               //     });
+               // }
+           }
+
+           for (var i = 0; i < localStorage.length; i++) {
+               var content_string_load = localStorage.getItem(i + 1);
+               var content_dict = JSON.parse(content_string_load);
+               console.log(content_dict);
+
+               var reviewList = document.getElementsByClassName("reviews");
+               var list = document.createElement("div");
+               list.innerText = "리뷰: " + content_dict[0];
+               reviewList[0].appendChild(list);
+               var marker = new naver.maps.Marker({
+                   position: new naver.maps.Point(
+                       content_dict[1],
+                       content_dict[2]
+                   ),
+
+                   map: naver_map
+               });
+           }
+        </script>
+    </body>
+</html>

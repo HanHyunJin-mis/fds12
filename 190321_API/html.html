@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>간단한 지도 표시하기</title>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=xofli09ju8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+<div id="test_naver_map" style="width:70%;height:500px;"></div>
+
+<script>
+var mapOptions = {
+    center: new naver.maps.LatLng(35.6298067,129.3386783),
+    zoom: 10
+};
+
+var naver_map = new naver.maps.Map($('test_naver_map')[0], option);
+map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
+customControl.setMap(map);
+
+var customControl = new naver.maps.CustomControl(locationBtnHrml,{
+position : naver.maps.Position.Top_LEFT
+});
+btnControl.setMap(naver_map);
+$('.btn_mylct').click(function(){
+    alert('test');
+});
+$('.btn.btn-warning').click(function(){
+
+});
+//마커 추가
+var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(37.3595704, 127.105399),
+    map: naver_map
+});
+
+
+
+function test(){
+    alert('in test function');
+}
+naver.maps.Event.addListener(naver_map, 'click', function(e) {
+    // marker.setPosition(e.latlng);
+    var marker = new.namnavet.maps.Marker({
+        position : e.latlng,
+        map : naver_map
+    });
+    naver_map.setCenter(e.latlng);
+    naver.maps.Event.addListener(marker, 'click', test);
+});
+
+// 주소 -> 이동 경로 geocorder
+/*
+id만 복붙
+주소를 검색해서 찾기를 누르면 마크가 찍힘
+검색 결과의 배열을 변수에 저장해서 인덱스로 
+마커 포지션을 item.point
+
+1. 맛집 주소 검색 -> 지도에 뜨게
+2. 마커 클릭시 리뷰 남길 수 있게
+3. 활용해서 맛집 지도 만들기
+4. 지도 api를 활용해서 식사하고 리뷰 찍기
+5. 마커와 리뷰는 꼭 합칠 필요는 없다.
+*/
+</script>
+</body>
+</html>

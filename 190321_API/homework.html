@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=xofli09ju8&submodules=geocoder"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <style>
+    /* 앵커 스타일 */
+    .anchor_text{
+        width: 100px;
+        height: 100px;
+    }
+    .inline-block {
+        display: inline-block;
+    }
+    </style>
+    <title>Map</title>
+</head>
+<body>
+    <div id="test_naver_map" style="width:70%;height:700px;"></div>
+    <!-- 우편번호 찾기 -->
+    <textarea style="width:80%; height: 200px; display: block;" id="qwerty"></textarea>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Address</label>
+        <input type="text" class="form-control" name="address" id="address" placeholder="도로명 주소 입력">
+    </div>
+    <button type="button" id="zipcode_search" class="btn btn-warning">우편번호 찾기</button>
+    <button id="btn_address">주소찾기</button>
+    <script>
+        var option = {
+            center: new naver.maps.LatLng(37.5431145,127.0549265),
+            zoom: 14,
+            scaleControl: true,
+            logoControl: true,
+            mapDataControl: true,
+            mapTypeControl: true,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: naver.maps.Position.RIGHT_CENTER
+            },
+        };
+
+        var naver_map = new naver.maps.Map($('#test_naver_map')[0], option);
+
+        naver_map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
+        var contentString;
+        function test() {
+            var userInput = {};
+            var userReview = prompt("리뷰를 입력하세요")
+            // console.log(userReview);
+            userInput[0] = userReview;
+            // console.log(userInput);
+            var content_string = JSON.stringify(userInput);
+            localStorage.setItem(localStorage.length + 1, content_string);
+            contentString = [
+                    '<div class = "anchor_text">', '<h4>', '리뷰', '</h4>', userReview , '</div>'
+                ].join('');
+                
+            var infowindow = new naver.maps.InfoWindow({
+                content: contentString,
+                maxWidth: 500,
+                backgroundColor: "#eee",
+                borderColor: "#eee",
+                borderWidth: 5,
+                anchorSize: new naver.maps.Size(10, 10),
+                anchorSkew: true,
+                anchorColor: "#eee",
+
+                pixelOffset: new naver.maps.Point(0, -20)
+
+                });
+                document.getElementById("qwerty").value = userReview;
+
+                naver.maps.Event.addListener(marker, "click", function(e) {
+                    document.getElementById("qwerty").value = infowindow.content;
+                    if (infowindow.getMap()) {
+                        infowindow.close();
+                    } else {
+                        infowindow.open(naver_map, marker);
+                    }
+                });
+
+                infowindow.open(naver_map, marker);
+        }
+
+        $('#btn_address').click(function(){
+            $('#address').val();
+            naver.maps.Service.geocode({ address: $('#address').val() }, function(status, response) {
+            if (status === naver.maps.Service.Status.ERROR) {
+                return alert('오류');
+            }
+            // 성공 시의 response 처리
+                var result = response.result, // 검색 결과의 컨테이너
+                items = result.items; // 검색 결과의 배열
+                console.log(items[0]);
+
+                var mark = items[0];
+
+                var marker = new naver.maps.Marker({
+                    position: new naver.maps.Point(mark.point.x, mark.point.y),
+                    map: naver_map
+                });
+
+                naver_map.setCenter(new naver.maps.Point(mark.point.x, mark.point.y));
+                naver.maps.Event.addListener(marker, "click", test);
+                // var a = prompt("입력",)
+                
+
+                
+            });
+        });
+        
+        $(document).ready(function(){
+            $('#zipcode_search').click(function(){
+                new daum.Postcode({
+                    oncomplete: function (data) {
+                        console.log(data);
+                        $('#address').val(data.address);
+                        }
+                }).open();
+            });
+        });
+    </script>
+</body>
+</html>
