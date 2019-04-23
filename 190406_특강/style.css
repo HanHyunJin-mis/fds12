@@ -1,0 +1,110 @@
+body,
+section,
+header,
+article,
+nav,
+footer,
+aside {
+    border: 2px solid black;
+}
+
+body {
+    position: relative;
+    padding: 24px 10px;
+    border-color: red;
+}
+
+body::before {
+    content: "<body>";
+    color: white;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+}
+
+body::after {
+    content: "</body>";
+    color: white;
+    background-color: red;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+}
+
+section::before {
+    content: "<section>";
+    color: white;
+    background-color: green;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+}
+
+section::after {
+    content: "</section>";
+    color: white;
+    background-color: green;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+}
+
+header::before {
+    content: "<header>";
+    color: white;
+    background-color: blue;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+}
+
+header::after {
+    content: "</header>";
+    color: white;
+    background-color: blue;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+}
+
+section {
+    position: relative;
+    padding: 24px 10px;
+    border-color: green;
+}
+
+header {
+    position: relative;
+    padding: 24px 10px;
+    border-color: blue;
+}
+
+article {
+    position: relative;
+    padding: 24px 10px;
+    border-color: pink;
+}
+
+nav {
+    position: relative;
+    padding: 24px 10px;
+    border-color: orange;
+}
+
+footer {
+    position: relative;
+    padding: 24px 10px;
+    border-color: aqua;
+}
+
+aside {
+    position: relative;
+    padding: 24px 10px;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function Node(data) {
+                this.data = data;
+                this.next = null;
+            }
+            // 연결 리스트 만들기
+            function LinkedList() {
+                var _length = 0;
+                var _head = null;
+            }
+            // 연결 리스트 끝에 데이터 삽입 [append method]
+            LinkedList.prototype.append = function(data) {
+                var node = new Node(data);
+                console.log(node);
+
+                var curr;
+                if (this._head == null) {
+                    this._head = node;
+                } else {
+                    curr = this._head;
+                    while (curr.next) {
+                        curr = curr.next;
+                    }
+                    curr.next = node;
+                }
+                this._length++;
+            };
+            var list = new LinkedList();
+            list.append(15);
+            list.append(10);
+
+            // 데이터 값을 인자로 받아 리스트에서 해당 데이터의 인덱스를 반환하는 [indexOf method]
+            LinkedList.prototype.indexOf = function(data) {
+                var curr = this._head,
+                    index = -1;
+                console.log(curr);
+
+                while (curr) {
+                    if (curr.data === data) {
+                        return index;
+                    }
+                    index++;
+                    curr = curr.next;
+                    console.log(curr);
+                }
+                return -1;
+            };
+
+            // var a = ["flower", "flow", "flight"];
+            // var longestCommonPrefix = function(strs) {
+            //     var arry = [];
+
+            //     var min;
+            //     for (i = 0; i < strs.length; i++) {
+            //         arry.push(strs[i].length);
+            //         min = Math.min.apply(null, arry);
+            //     }
+            //     console.log(min);
+            //     var sum = "";
+            //     var aaa = [];
+            //     for (i = 0; i < min; i++) {
+            //         var b;
+            //         for (j = 1; j < strs.length; j++) {
+            //             console.log(strs[0].split("")[i]);
+            //             console.log(strs[j].split("")[i]);
+
+            //             b = strs[0].split("")[i] == strs[j].split("")[i];
+
+            //             aaa.push(b);
+            //             console.log(b);
+            //             if (aaa.indexOf(false) == -1) {
+            //                 sum += strs[0].slice(i, i + 1);
+            //             } else {
+            //                 break;
+            //             }
+            //         }
+            //     }
+            //     return sum;
+            // };
+            // console.log(longestCommonPrefix(a));
+        </script>
+    </body>
+</html>

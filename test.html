@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <script>
+            // true * true 는 1
+            // 다 length를 4로 만들어보기
+            var a = ["flower", "flow", "flight"];
+            var len;
+            for (i = 0; i < a.length - 1; i++) {
+                console.log(a[i].length);
+                if (a[i].length < a[i + 1].length) {
+                    temp = a[i];
+                    len = a[i].length;
+                    a_index = a.indexOf(temp);
+                } else {
+                    temp = a[i + 1];
+                    len = a[i + 1].length;
+                    a_index = a.indexOf(temp);
+                }
+            }
+            console.log(temp);
+            console.log(len);
+            var b = a.splice(a_index, 1);
+            console.log(b);
+
+            //length를 최소값으로
+            //map
+
+            // // console.log(flowers[1].substr(0, 1));
+            // var arry = [];
+
+            // //길이 중 최소 길이 저장하기
+            // var min;
+            // for (i = 0; i < flowers.length; i++) {
+            //     arry.push(flowers[i].length);
+            //     min = Math.min.apply(null, arry);
+            //     console.log(arry);
+            //     console.log(min);
+            // }
+        </script>
+    </body>
+</html>

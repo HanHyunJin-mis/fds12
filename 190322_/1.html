@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var a = document.getElementById('elm_id');
+        a.click(function(){}); //작동 안함, $가 없어서
+
+        var b = $('#id');
+        b.click(function(){});
+
+        var c  = $(a);
+        c.click(function(){});
+
+        // 일정 스코프 내에서 동작하는 변수 - 지역변수
+        // 함수 내에서 작성하는 것이 좋다.
+        // 호이스팅 : 변수를 정의하면 변수가 영향을 미치는 스코프 안에서 최상단으로 변수의 정의부를 이동시킨다.
+        var test = '1';
+        function print(){
+            console.log(test);
+            var test = '2';
+            console.log(test);
+        }
+        print();
+        console.log(test)
+
+
+
+
+
+        var value1 = "1";
+
+        // 전역 변수
+        value2 = "2";
+        
+        // 변수의 지역 문제
+        // 콜백 지옥
+        $(function(){
+            // $로 감싸서 변수에 넣은 것과 그냥 변수에 넣은 것은 다르다.
+            var elem = $('<p id="p_test">test_p</p>');
+            elem.click(function(){alert('p_click');});
+            var elem2 = $("<p id='p_test2'> test_p2 </p>");
+
+            $('#span-test').append(elem3);
+
+            elem2.click(function(){
+                alert('p2 click')
+            });
+
+            var elem3 = $('<p id="p_test">test_p</p>');
+            $(elem3).click(function(){alert('p_click');}); //동작 안됨
+            var elem3 = $("<p id='p_test2'> test_p2 </p>");
+
+            var elem4 = $('<p id="p_test">test_p</p>');
+            $(elem4).click(function(){alert('p_click');}); //동작 안됨
+            elem.click(function(){alert('p_click');});
+            var elem4 = $("<p id='p_test2'> test_p2 </p>");
+            //언제 어떤 것을 어떻게
+        });
+    </script>
+</body>
+</html>

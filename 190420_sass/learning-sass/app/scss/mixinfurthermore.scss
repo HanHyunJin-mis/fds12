@@ -1,0 +1,30 @@
+$breakpoints: (small: 767px,
+medium: 992px,
+large: 1200px);
+
+// 미디어 쿼리를 만들어줌
+@mixin respond-to($breakpoint) {
+
+  // 검사하고 싶은 key이름인 breakpoint가 breakpoints 내에 존재한다면~
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+
+  // 예외처리
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+    +"Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+// respond-to안의 변수인 small이 mixin 안의 검사를 통해 breakpoints 안에 있으므로 
+// #{map-get($breakpoints, $breakpoint)}을 통해 가지고 오고 싶은 small의 값을 가져오게 된다.
+.element {
+  color: hotpink;
+
+  @include respond-to(small) {
+    color: tomato;
+  }
+}
